@@ -8,29 +8,34 @@ using UnityEngine.UI;
 
 public class VotingUI : MonoBehaviour
 {
-    [SerializeField] private Slider statusBar;
+    [SerializeField] private Slider statusBarA;
+    [SerializeField] private Slider statusBarB;
     [SerializeField] private TMP_Text statusText;
 
     private InputAction voteAAction;
     private InputAction voteBAction;
 
-    private Coroutine currentRoutine;
-    private float timer;
+    private Coroutine currentRoutineA;
+    private Coroutine currentRoutineB;
+
+    private float[] timers = new float[2];
 
     private void Awake()
     {
         statusText.enabled = false;
 
-        statusBar.value = 0f;
-        timer = 0f;
+        statusBarA.value = 0f;
+        statusBarB.value = 0f;
+        timers[0] = 0f;
+        timers[1] = 0f;
     }
 
     private void OnDisable()
     {
-        voteAAction.started -= StartTimer;
-        voteBAction.started -= StartTimer;
-        voteAAction.canceled -= CancelTimer;
-        voteBAction.canceled -= CancelTimer;
+        voteAAction.started -= StartTimerA;
+        voteBAction.started -= StartTimerB;
+        voteAAction.canceled -= CancelTimerA;
+        voteBAction.canceled -= CancelTimerB;
     }
 
     public void RegisterPlayer(PlayerInput playerInput)
@@ -38,39 +43,67 @@ public class VotingUI : MonoBehaviour
         voteAAction = playerInput.actions.FindAction("Vote A");
         voteBAction = playerInput.actions.FindAction("Vote B");
 
-        voteAAction.started += StartTimer;
-        voteBAction.started += StartTimer;
-        voteAAction.canceled += CancelTimer;
-        voteBAction.canceled += CancelTimer;
+        voteAAction.started += StartTimerA;
+        voteBAction.started += StartTimerB;
+        voteAAction.canceled += CancelTimerA;
+        voteBAction.canceled += CancelTimerB;
     }
 
-    private void StartTimer(InputAction.CallbackContext context)
+    private void StartTimerA(InputAction.CallbackContext context)
     {
-        if (currentRoutine != null)
-            StopCoroutine(currentRoutine);
+        if (voteBAction.IsInProgress())
+            /*
+             * I'm being sneaking here, I'm passing the context for B to A because it's only useful for
+             * getting the hold duration, so it doesn't matter where it came from
+             */
+            CancelTimerB(context);  
+
+        if (currentRoutineA != null)
+            StopCoroutine(currentRoutineA);
 
         var interaction = context.interaction as HoldInteraction;
-        currentRoutine = StartCoroutine(FillBar(interaction.duration));
+        currentRoutineA = StartCoroutine(FillBar(interaction.duration, statusBarA, 0));
     }
 
-    private void CancelTimer(InputAction.CallbackContext context)
+    private void StartTimerB(InputAction.CallbackContext context)
     {
-        if (currentRoutine != null)
-            StopCoroutine(currentRoutine);
+        if (voteAAction.IsInProgress())
+            CancelTimerA(context);
+
+        if (currentRoutineB != null)
+            StopCoroutine(currentRoutineB);
 
         var interaction = context.interaction as HoldInteraction;
-        currentRoutine = StartCoroutine(CancelFillBar(interaction.duration));
+        currentRoutineB = StartCoroutine(FillBar(interaction.duration, statusBarB, 1));
     }
 
-    private IEnumerator FillBar(float holdDuration)
+    private void CancelTimerA(InputAction.CallbackContext context)
     {
-        while (timer < holdDuration)
+        if (currentRoutineA != null)
+            StopCoroutine(currentRoutineA);
+
+        var interaction = context.interaction as HoldInteraction;
+        currentRoutineA = StartCoroutine(CancelFillBar(interaction.duration, statusBarA, 0));
+    }
+
+    private void CancelTimerB(InputAction.CallbackContext context)
+    {
+        if (currentRoutineB != null)
+            StopCoroutine(currentRoutineB);
+
+        var interaction = context.interaction as HoldInteraction;
+        currentRoutineB = StartCoroutine(CancelFillBar(interaction.duration, statusBarB, 1));
+    }
+
+    private IEnumerator FillBar(float holdDuration, Slider statusBar, int timerIndex)
+    {
+        while (timers[timerIndex] < holdDuration)
         {
             // Update the timer
-            timer += Time.deltaTime;
+            timers[timerIndex] += Time.deltaTime;
 
             // Update UI
-            statusBar.value = timer / holdDuration;
+            statusBar.value = timers[timerIndex] / holdDuration;
 
             yield return new WaitForEndOfFrame();
         }
@@ -79,20 +112,20 @@ public class VotingUI : MonoBehaviour
         statusText.enabled = true;
     }
 
-    private IEnumerator CancelFillBar(float holdDuration)
+    private IEnumerator CancelFillBar(float holdDuration, Slider statusBar, int timerIndex)
     {
         statusText.enabled = false;
 
-        while (timer > 0)
+        while (timers[timerIndex] > 0)
         {
-            timer -= Time.deltaTime;
+            timers[timerIndex] -= Time.deltaTime;
 
-            statusBar.value = timer / holdDuration;
+            statusBar.value = timers[timerIndex] / holdDuration;
 
             yield return new WaitForEndOfFrame();
         }
 
         statusBar.value = 0;
-        timer = 0;
+        timers[timerIndex] = 0;
     }
 }

@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 
 public class VotingChoice : MonoBehaviour
 {
-    PlayerInput playerInput;
-    InputAction voteAAction;
-    InputAction voteBAction;
+    private PlayerInput playerInput;
+    private InputAction voteAAction;
+    private InputAction voteBAction;
+
+    private InputAction choice;
 
     private void Awake()
     {
@@ -18,23 +20,28 @@ public class VotingChoice : MonoBehaviour
 
     private void OnEnable()
     {
-        voteAAction.performed += OnVoteA;
-        voteBAction.performed += OnVoteB;
+        voteAAction.started += RecordVote;
+        voteBAction.started += RecordVote;
+        voteAAction.performed += CastVote;
+        voteBAction.performed += CastVote;
     }
 
     private void OnDisable()
     {
-        voteAAction.performed -= OnVoteA;
-        voteBAction.performed -= OnVoteB;
+        voteAAction.started += RecordVote;
+        voteBAction.started += RecordVote;
+        voteAAction.performed -= CastVote;
+        voteBAction.performed -= CastVote;
     }
 
-    private void OnVoteA(InputAction.CallbackContext context)
+    private void RecordVote(InputAction.CallbackContext context)
     {
-        Debug.Log("lmao");
+        choice = context.action;
     }
 
-    private void OnVoteB(InputAction.CallbackContext context)
+    private void CastVote(InputAction.CallbackContext context)
     {
-        Debug.Log("lol");
+        if (context.action == choice)
+            Debug.Log(context.action.name);
     }
 }

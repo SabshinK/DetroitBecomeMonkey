@@ -9,8 +9,12 @@ public class UIManager : MonoBehaviour
 
     private VotingUI[] votingUIs;
 
+    private PlayerInputManager inputManager;
+
     private void Awake()
     {
+        inputManager = FindObjectOfType<PlayerInputManager>();
+
         votingUIs = new VotingUI[votingUIParent.childCount];
         for (int i = 0; i < votingUIParent.childCount; i++)
         {
@@ -18,14 +22,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void RegisterPlayer(PlayerInput playerInput)
+    private void OnEnable()
+    {
+        inputManager.onPlayerJoined += RegisterPlayer;
+    }
+
+    private void OnDisable()
+    {
+        inputManager.onPlayerJoined -= RegisterPlayer;
+    }
+
+    private void RegisterPlayer(PlayerInput playerInput)
     {
         foreach (VotingUI ui in votingUIs)
         {
-            if (!ui.enabled)
+            if (!ui.gameObject.activeInHierarchy)
             {
-                ui.enabled = true;
+                // Player registration should probably happen beforehand and all the UI should already be enabled
+                ui.gameObject.SetActive(true);
                 ui.RegisterPlayer(playerInput);
+                break;
             }
         }
     }
