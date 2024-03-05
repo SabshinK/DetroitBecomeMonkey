@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "Hold(duration=1.5)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Transition",
+                    "type": "Button",
+                    "id": "0b66fca2-6efa-4e83-b102-3b648fc08015",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -88,6 +97,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Vote B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20500495-195a-45e8-91f4-20d9845a4e6a",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Transition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

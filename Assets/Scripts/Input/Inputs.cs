@@ -44,6 +44,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=1.5)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Transition"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b66fca2-6efa-4e83-b102-3b648fc08015"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Vote B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20500495-195a-45e8-91f4-20d9845a4e6a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_VoteA = m_Player.FindAction("Vote A", throwIfNotFound: true);
         m_Player_VoteB = m_Player.FindAction("Vote B", throwIfNotFound: true);
+        m_Player_Transition = m_Player.FindAction("Transition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,12 +206,14 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_VoteA;
     private readonly InputAction m_Player_VoteB;
+    private readonly InputAction m_Player_Transition;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
         public PlayerActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @VoteA => m_Wrapper.m_Player_VoteA;
         public InputAction @VoteB => m_Wrapper.m_Player_VoteB;
+        public InputAction @Transition => m_Wrapper.m_Player_Transition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +229,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @VoteB.started += instance.OnVoteB;
             @VoteB.performed += instance.OnVoteB;
             @VoteB.canceled += instance.OnVoteB;
+            @Transition.started += instance.OnTransition;
+            @Transition.performed += instance.OnTransition;
+            @Transition.canceled += instance.OnTransition;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -216,6 +242,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @VoteB.started -= instance.OnVoteB;
             @VoteB.performed -= instance.OnVoteB;
             @VoteB.canceled -= instance.OnVoteB;
+            @Transition.started -= instance.OnTransition;
+            @Transition.performed -= instance.OnTransition;
+            @Transition.canceled -= instance.OnTransition;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -237,5 +266,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     {
         void OnVoteA(InputAction.CallbackContext context);
         void OnVoteB(InputAction.CallbackContext context);
+        void OnTransition(InputAction.CallbackContext context);
     }
 }
