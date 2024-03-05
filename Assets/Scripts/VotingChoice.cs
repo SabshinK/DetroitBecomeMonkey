@@ -1,93 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class VotingChoice : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    public UnityEvent<Choice> onCastVote;
+    public UnityEvent<Choice> onCancelVote;
+
     private InputAction voteAAction;
     private InputAction voteBAction;
 
     private InputAction choice;
+    private Choice choiceCode;
+
+    private bool didCast;
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        PlayerInput playerInput = GetComponent<PlayerInput>();
         voteAAction = playerInput.actions.FindAction("Vote A");
         voteBAction = playerInput.actions.FindAction("Vote B");
     }
 
-    //private void OnEnable()
-    //{
-    //    voteAAction.started += RecordVote;
-    //    voteBAction.started += RecordVote;
-    //    voteAAction.performed += CastVote;
-    //    voteBAction.performed += CastVote;
-    //}
+    private void OnEnable()
+    {
+        voteAAction.started += RecordVote;
+        voteBAction.started += RecordVote;
+        voteAAction.performed += CastVote;
+        voteBAction.performed += CastVote;
+        voteAAction.canceled += CancelVote;
+        voteBAction.canceled += CancelVote;
+    }
 
-    //private void OnDisable()
-    //{
-    //    voteAAction.started += RecordVote;
-    //    voteBAction.started += RecordVote;
-    //    voteAAction.performed -= CastVote;
-    //    voteBAction.performed -= CastVote;
-    //}
+    private void OnDisable()
+    {
+        voteAAction.started -= RecordVote;
+        voteBAction.started -= RecordVote;
+        voteAAction.performed -= CastVote;
+        voteBAction.performed -= CastVote;
+        voteAAction.canceled -= CancelVote;
+        voteBAction.canceled -= CancelVote;
+    }
 
-    //private void RecordVote(InputAction.CallbackContext context)
-    //{
-    //    choice = context.action;
-    //}
+    private void RecordVote(InputAction.CallbackContext context)
+    {
+        choice = context.action;
+    }
 
-    //private void CastVote(InputAction.CallbackContext context)
-    //{
-    //    if (context.action == choice)
-    //        Debug.Log(context.action.name);
-    //}
+    private void CastVote(InputAction.CallbackContext context)
+    {
+        if (context.action == choice)
+        {
+            // Turn the choice action into an easily readable enum
+            if (choice == voteAAction)
+                choiceCode = Choice.A;
+            else if (choice == voteBAction)
+                choiceCode = Choice.B;
+            else
+                choiceCode = Choice.C;
 
-    //private void OnDisable()
-    //{
-    //    voteAAction.started -= StartTimer;
-    //    voteBAction.started -= StartTimer;
-    //    voteAAction.canceled -= CancelTimer;
-    //    voteBAction.canceled -= CancelTimer;
-    //}
+            didCast = true;
+            onCastVote?.Invoke(choiceCode);
+        }
+    }
 
-    //private void StartTimer(InputAction.CallbackContext context)
-    //{
-    //    if (voteBAction.IsInProgress())
+    private void CancelVote(InputAction.CallbackContext context)
+    {
+        if (didCast)
+        {
+            onCancelVote?.Invoke(choiceCode);
+            didCast = false;
+        }
+    }
+}
 
-    //        if (currentRoutine != null)
-    //            StopCoroutine(currentRoutine);
-
-    //    var interaction = context.interaction as HoldInteraction;
-    //    currentRoutineA = StartCoroutine(FillBar(interaction.duration, statusBar, 0));
-    //}
-
-    //private void CancelTimer(InputAction.CallbackContext context)
-    //{
-    //    if (currentRoutineA != null)
-    //        StopCoroutine(currentRoutineA);
-
-    //    var interaction = context.interaction as HoldInteraction;
-    //    currentRoutineA = StartCoroutine(CancelFillBar(interaction.duration, statusBar, 0));
-    //}
-
-    //private IEnumerator FillBar(float holdDuration, Slider statusBar, int timerIndex)
-    //{
-    //    while (timers[timerIndex] < holdDuration)
-    //    {
-    //        // Update the timer
-    //        timers[timerIndex] += Time.deltaTime;
-
-    //        // Update UI
-    //        statusBar.value = timers[timerIndex] / holdDuration;
-
-    //        yield return new WaitForEndOfFrame();
-    //    }
-
-    //    statusBar.value = 1;
-    //    statusText.enabled = true;
-    //}
+public enum Choice
+{
+    A = 1,
+    B = 2,
+    C = 3
 }

@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerInputManager InputManager { get; private set; }
 
+    public int PlayerCount => transform.childCount;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
