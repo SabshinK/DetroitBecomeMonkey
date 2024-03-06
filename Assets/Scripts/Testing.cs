@@ -1,32 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Testing : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private InputAction transAction;
+    [SerializeField] private TMP_Text text;
 
-    private void Awake()
+    public UnityEvent onPresentChoice;
+
+    private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        transAction = playerInput.actions.FindAction("Transition");
+        StartCoroutine(TestNarrative());
     }
 
-    private void OnEnable()
+    private IEnumerator TestNarrative()
     {
-        transAction.performed += NextScene;
-    }
+        text.text = "ooo aah luffy image";
 
-    private void OnDisable()
-    {
-        transAction.performed -= NextScene;
-    }
+        yield return new WaitForSeconds(1f);
 
-    private void NextScene(InputAction.CallbackContext context)
-    {
-        SceneManager.LoadScene(1);
+        text.text = "what's he doing???";
+
+        yield return new WaitForSeconds(1f);
+
+        text.text = "now it's time to choose: A or B?";
+
+        yield return new WaitForSeconds(0.5f);
+
+        onPresentChoice?.Invoke();
     }
 }
