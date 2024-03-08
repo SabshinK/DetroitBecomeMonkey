@@ -54,6 +54,8 @@ public class VotingManager : MonoBehaviour
             playerVote.onFinishCastVote += SubmitVote;
             playerVote.onCancelCastVote += CancelVote;
         }
+
+        onCastFinalVote += (Choice choice) => { shouldVote = false; };
     }
 
     private void OnDisable()
@@ -139,6 +141,9 @@ public class VotingManager : MonoBehaviour
         majorityVote = Choice.C;
         onUpdateMajorityVote?.Invoke(majorityVote);
         playersReady = 0;
+
+        choiceTallies = new Dictionary<Choice, int>();
+
         shouldVote = true;
     }
 

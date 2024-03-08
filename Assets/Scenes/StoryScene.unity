@@ -968,7 +968,7 @@ MonoBehaviour:
   text: {fileID: 1321537428}
   img: {fileID: 1377614433}
   enel: {fileID: 21300000, guid: 9f172847c81279a489c41f94640456bc, type: 3}
-  randomizeTiebreaker: 1
+  randomizeTiebreaker: 0
   onPresentChoice:
     m_PersistentCalls:
       m_Calls:
