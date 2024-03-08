@@ -16,7 +16,7 @@ public class VotingManager : MonoBehaviour
     public event FinalVoteEvent onUpdateMajorityVote;
     public event FinalVoteEvent onCastFinalVote;
     
-    [SerializeField] private Testing testing;
+    [SerializeField] private NarrativeHandler testing;
 
     [SerializeField] private float voteTime = 10f;
     
@@ -46,7 +46,7 @@ public class VotingManager : MonoBehaviour
 
     private void OnEnable()
     {
-        testing.onPresentChoice.AddListener(InitializedDecision);
+        testing.onPresentChoice += InitializedDecision;
 
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
         {
@@ -60,7 +60,7 @@ public class VotingManager : MonoBehaviour
 
     private void OnDisable()
     {
-        testing.onPresentChoice.RemoveListener(InitializedDecision);
+        testing.onPresentChoice -= InitializedDecision;
 
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
         {
@@ -133,7 +133,7 @@ public class VotingManager : MonoBehaviour
             playersReady = playersReady > 0 ? playersReady - 1 : 0;
     }
 
-    private void InitializedDecision()
+    private void InitializedDecision(string[] choices)
     {
         //if (isTimed)
         //    StartCoroutine(TimedVote(voteTime));

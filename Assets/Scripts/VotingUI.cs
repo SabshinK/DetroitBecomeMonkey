@@ -24,6 +24,8 @@ public class VotingUI : MonoBehaviour
     [Space]
     [SerializeField] private Animator timerBar;
 
+    [SerializeField] private NarrativeHandler narrative;
+
     private Dictionary<int, PlayerIcon> idsToIcons;
 
     private Coroutine currentRoutine;
@@ -56,6 +58,8 @@ public class VotingUI : MonoBehaviour
         {
             playerVote.onStartCastVote += SetPlayerIconLocation;
         }
+
+        narrative.onPresentChoice += PresentChoice;
     }
 
     private void OnDisable()
@@ -67,9 +71,11 @@ public class VotingUI : MonoBehaviour
         {
             playerVote.onStartCastVote -= SetPlayerIconLocation;
         }
+
+        narrative.onPresentChoice -= PresentChoice;
     }
 
-    public void PresentChoice()
+    public void PresentChoice(string[] choices)
     {
         aspectBottom.SetBool("IsPresenting", true);
     }
