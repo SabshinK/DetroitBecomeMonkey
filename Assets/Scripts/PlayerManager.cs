@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
 
     public int PlayerCount => transform.childCount;
 
+    public readonly Dictionary<int, PlayerInput> idsToPlayers = new Dictionary<int, PlayerInput>();
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,16 +29,26 @@ public class PlayerManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.onPlayerJoined += ParentPlayer;
+        InputManager.onPlayerJoined += RegisterPlayer;
     }
 
     private void OnDisable()
     {
-        InputManager.onPlayerJoined -= ParentPlayer;
+        InputManager.onPlayerJoined -= RegisterPlayer;
     }
 
-    private void ParentPlayer(PlayerInput playerInput)
+    private void RegisterPlayer(PlayerInput playerInput)
     {
+        // Parent the new player instance to the player manager
         playerInput.transform.parent = transform;
+
+        // Add the player and its id to the dictionary
+        idsToPlayers.Add(transform.childCount, playerInput);
+
+        // Initialize player vote
+        PlayerVote playerVote = playerInput.GetComponent<PlayerVote>();
+        playerVote.PlayerId = transform.childCount;
+
+        Debug.Log(transform.childCount);
     }
 }

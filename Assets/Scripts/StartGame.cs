@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    private List<VotingChoice> playerVotes;
+    private List<PlayerVote> playerVotes;
 
     private int playersReady = 0;
 
     private void Awake()
     {
-        playerVotes = new List<VotingChoice>();
+        playerVotes = new List<PlayerVote>();
     }
 
     private void OnEnable()
@@ -24,22 +24,25 @@ public class StartGame : MonoBehaviour
     {
         PlayerManager.Instance.InputManager.onPlayerJoined -= RegisterPlayer;
 
-        foreach (VotingChoice playerVote in playerVotes)
+        foreach (PlayerVote playerVote in playerVotes)
         {
-            playerVote.onCastVote.RemoveListener(TallyAndCheck);
-            playerVote.onCancelVote.RemoveListener(CancelVote);
+            playerVote.onFinishCastVote -= TallyAndCheck;
+            playerVote.onCancelCastVote -= CancelVote;
         }
     }
 
     private void RegisterPlayer(PlayerInput playerInput)
     {
-        VotingChoice playerVote = playerInput.GetComponent<VotingChoice>();
+        PlayerVote playerVote = playerInput.GetComponent<PlayerVote>();
 
-        playerVote.onCastVote.AddListener(TallyAndCheck);
-        playerVote.onCancelVote.AddListener(CancelVote);
+        playerVote.onFinishCastVote += TallyAndCheck;
+        playerVote.onCancelCastVote += CancelVote;
+
+        // Add player vote to the list
+        playerVotes.Add(playerVote);
     }
 
-    private void TallyAndCheck(Choice choice)
+    private void TallyAndCheck(int playerId, Choice choice)
     {
         playersReady++;
 
@@ -49,7 +52,7 @@ public class StartGame : MonoBehaviour
             StartCoroutine(NextScene(2f));
     }
 
-    private void CancelVote(Choice choice)
+    private void CancelVote(int playerId, Choice choice)
     {
         StopAllCoroutines();
 

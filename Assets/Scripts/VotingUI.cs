@@ -8,7 +8,11 @@ using UnityEngine.UI;
 
 public class VotingUI : MonoBehaviour
 {
+    [SerializeField] private Transform iconParent;
+    [SerializeField] private GameObject iconAreaA;
+    [SerializeField] private GameObject iconAreaB;
     [SerializeField] private GameObject iconPrefab;
+
     [SerializeField] private Animator aspectBottom;
 
     [Space]
@@ -20,26 +24,49 @@ public class VotingUI : MonoBehaviour
     [Space]
     [SerializeField] private Animator timerBar;
 
+    private Dictionary<int, PlayerIcon> idsToIcons;
+
     private Coroutine currentRoutine;
 
     private void Awake()
     {
+        idsToIcons = new Dictionary<int, PlayerIcon>();
+
         // Need to make icons for each player
+        foreach (KeyValuePair<int, PlayerInput> player in PlayerManager.Instance.idsToPlayers)
+        {
+            // Create the icon objects
+            GameObject icon = GameObject.Instantiate(iconPrefab, iconParent);
+            PlayerIcon iconScript = icon.GetComponent<PlayerIcon>();
+
+            // Hand off player data to the icons
+            iconScript.RegisterPlayer(player.Value.GetComponent<PlayerInput>(), player.Key);
+
+            // Add icon to dictionary
+            idsToIcons.Add(player.Key, iconScript);
+        }
     }
 
     private void OnEnable()
     {
-        VotingManager.Instance.onUpdateVote.AddListener(SetSelectionUnderline);
+        VotingManager.Instance.onUpdateMajorityVote += SetSelectionUnderline;
+        VotingManager.Instance.onCastFinalVote += FinishChoice;
+
+        foreach (PlayerVote playerVote in VotingManager.Instance.idsToPlayerVotes.Values)
+        {
+            playerVote.onStartCastVote += SetPlayerIconLocation;
+        }
     }
 
     private void OnDisable()
     {
-        VotingManager.Instance.onUpdateVote.RemoveListener(SetSelectionUnderline);
-    }
+        VotingManager.Instance.onUpdateMajorityVote -= SetSelectionUnderline;
+        VotingManager.Instance.onCastFinalVote -= FinishChoice;
 
-    public void RegisterPlayer(PlayerInput playerInput)
-    {
-        
+        foreach (PlayerVote playerVote in VotingManager.Instance.idsToPlayerVotes.Values)
+        {
+            playerVote.onStartCastVote -= SetPlayerIconLocation;
+        }
     }
 
     public void PresentChoice()
@@ -47,22 +74,32 @@ public class VotingUI : MonoBehaviour
         aspectBottom.SetBool("IsPresenting", true);
     }
 
+    private void FinishChoice(Choice choice)
+    {
+        foreach (PlayerIcon icon in idsToIcons.Values)
+        {
+            icon.transform.SetParent(iconParent);
+            icon.transform.position = new Vector3(0, -650, 0);
+        }
+
+        selectionAUnderline.SetBool("IsSelected", false);
+        selectionBUnderline.SetBool("IsSelected", false);
+
+        aspectBottom.SetBool("IsPresenting", false);
+    }
+
     private void SetSelectionUnderline(Choice choice)
     {
+        selectionAUnderline.SetBool("IsSelected", choice == Choice.A);
+        selectionBUnderline.SetBool("IsSelected", choice == Choice.B);
+    }
+
+    private void SetPlayerIconLocation(int playerId, Choice choice)
+    {
+        // I need to access the player icon of the given id and move it under the correct icon area
         if (choice == Choice.A)
-        {
-            selectionAUnderline.SetBool("IsSelected", true);
-            selectionBUnderline.SetBool("IsSelected", false);
-        }
+            idsToIcons[playerId].transform.SetParent(iconAreaA.transform.GetChild(0));
         else if (choice == Choice.B)
-        {
-            selectionAUnderline.SetBool("IsSelected", false);
-            selectionBUnderline.SetBool("IsSelected", true);
-        }
-        else
-        {
-            selectionAUnderline.SetBool("IsSelected", false);
-            selectionBUnderline.SetBool("IsSelected", false);
-        }
+            idsToIcons[playerId].transform.SetParent(iconAreaB.transform.GetChild(0));
     }
 }

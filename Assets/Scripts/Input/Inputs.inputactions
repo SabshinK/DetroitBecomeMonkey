@@ -22,22 +22,13 @@
                     "processors": "",
                     "interactions": "Hold(duration=1.5)",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Transition",
-                    "type": "Button",
-                    "id": "0b66fca2-6efa-4e83-b102-3b648fc08015",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "3b4472ce-ac07-442e-9562-fb5dd486b367",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -48,7 +39,7 @@
                 {
                     "name": "",
                     "id": "de42f448-ff71-427f-a454-eacd4121c617",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,7 +61,7 @@
                 {
                     "name": "",
                     "id": "d641fc07-e598-40e3-b222-9dedae217dca",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -81,7 +72,7 @@
                 {
                     "name": "",
                     "id": "0fd023cb-da27-46b5-90b1-76cb71ffd2ae",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -97,17 +88,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Vote B",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "20500495-195a-45e8-91f4-20d9845a4e6a",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Transition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
