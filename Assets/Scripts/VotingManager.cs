@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class VotingManager : MonoBehaviour
 {
@@ -18,13 +19,13 @@ public class VotingManager : MonoBehaviour
 
     public bool ShouldVote { get; private set; }
     
-    [SerializeField] private NarrativeHandler testing;
+    [SerializeField] private INarrative narrative;
 
     [SerializeField] private float voteTime = 10f;
     
     private Dictionary<Choice, int> choiceTallies;
     private Choice majorityVote;
-    private int playersReady = 0;    
+    private int playersReady = 0;
 
     private void Awake()
     {
@@ -32,7 +33,10 @@ public class VotingManager : MonoBehaviour
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
         // Populate player vote dictionary
         foreach (KeyValuePair<int, PlayerInput> player in PlayerManager.Instance.idsToPlayers)
@@ -46,7 +50,8 @@ public class VotingManager : MonoBehaviour
 
     private void OnEnable()
     {
-        testing.onPresentChoice += InitializedDecision;
+        if (narrative != null)
+            narrative.onPresentChoice += InitializeDecision;
 
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
         {
@@ -56,11 +61,13 @@ public class VotingManager : MonoBehaviour
         }
 
         onCastFinalVote += (Choice choice) => { ShouldVote = false; };
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        testing.onPresentChoice -= InitializedDecision;
+        //narrative.onPresentChoice -= InitializeDecision;
 
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
         {
@@ -68,6 +75,18 @@ public class VotingManager : MonoBehaviour
             playerVote.onFinishCastVote -= SubmitVote;
             playerVote.onCancelCastVote -= CancelVote;
         }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Get all INarratives in the scene, 
+        MonoBehaviour[] monoBehaviours = FindObjectsOfType<MonoBehaviour>();
+        INarrative[] narratives = (from r_narratives in monoBehaviours where r_narratives.GetType().GetInterfaces().Any(k => k == typeof(INarrative)) select (INarrative)r_narratives).ToArray();
+
+        if (narratives.Length > 0)
+            narratives[0].onPresentChoice += InitializeDecision;
     }
 
     // These two functions are just getting what the current voting status is like, players have to all hold buttons to submit
@@ -133,7 +152,7 @@ public class VotingManager : MonoBehaviour
             playersReady = playersReady > 0 ? playersReady - 1 : 0;
     }
 
-    private void InitializedDecision(string[] choices)
+    private void InitializeDecision(string[] choices)
     {
         //if (isTimed)
         //    StartCoroutine(TimedVote(voteTime));
@@ -143,6 +162,9 @@ public class VotingManager : MonoBehaviour
         playersReady = 0;
 
         choiceTallies = new Dictionary<Choice, int>();
+
+        foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
+            playerVote.ResetVote();
 
         ShouldVote = true;
     }

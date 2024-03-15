@@ -8,14 +8,14 @@ using UnityEngine.UI;
 public class NarrativeHandler : MonoBehaviour, INarrative
 {
     public event INarrative.ChoiceEvent onPresentChoice;
-
+    
     [SerializeField] private ShotSequence[] shotSequences;
 
     [SerializeField] private Image shot;
     [SerializeField] private TMP_Text dialogueBox;
 
     private int currentSequence;
-    private int dialogueIndex;    
+    private int dialogueIndex;
 
     private void Awake()
     {
@@ -52,7 +52,6 @@ public class NarrativeHandler : MonoBehaviour, INarrative
             if (shotSequences[currentSequence].choices.Length > 0)
             {
                 // Theoretically disable the buttons too
-
 
                 onPresentChoice?.Invoke(shotSequences[currentSequence].choices);
             }

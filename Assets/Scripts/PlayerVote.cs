@@ -45,7 +45,7 @@ public class PlayerVote : MonoBehaviour
             voteAction.canceled += CancelCastVote;
         }
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
@@ -57,18 +57,18 @@ public class PlayerVote : MonoBehaviour
             voteAction.canceled -= CancelCastVote;
         }
 
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        //SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        Testing test = FindObjectOfType<Testing>();
-        if (test != null)
-            test.onPresentChoice.AddListener(() => { 
-                LastChoice = Choice.Default;
-                choiceCode = Choice.Default;
-            });
-    }
+    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    Testing test = FindObjectOfType<Testing>();
+    //    if (test != null)
+    //        test.onPresentChoice.AddListener(() => { 
+    //            LastChoice = Choice.Default;
+    //            choiceCode = Choice.Default;
+    //        });
+    //}
 
     private void StartCastVote(InputAction.CallbackContext context)
     {
@@ -112,6 +112,12 @@ public class PlayerVote : MonoBehaviour
 
         // If the action isn't a valid choice return default
         return Choice.Default;
+    }
+
+    public void ResetVote()
+    {
+        LastChoice = Choice.Default;
+        choiceCode = Choice.Default;
     }
 }
 

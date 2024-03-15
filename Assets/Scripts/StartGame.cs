@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +32,19 @@ public class StartGame : MonoBehaviour, INarrative
             playerVote.onFinishCastVote -= TallyAndCheck;
             playerVote.onCancelCastVote -= CancelVote;
         }
+
+        // Unsubscribe all listeners from onPresentChoice
+        if (onPresentChoice != null)
+        {
+            foreach (Delegate d in onPresentChoice.GetInvocationList())
+                onPresentChoice -= d as INarrative.ChoiceEvent;
+        }
+    }
+
+    // Start is called after SceneManager.sceneLoaded
+    private void Start()
+    {
+        onPresentChoice?.Invoke(new string[0]);
     }
 
     private void RegisterPlayer(PlayerInput playerInput)
