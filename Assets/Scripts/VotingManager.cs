@@ -92,22 +92,19 @@ public class VotingManager : MonoBehaviour
     // These two functions are just getting what the current voting status is like, players have to all hold buttons to submit
     private void RecordVote(int playerId, Choice choice)
     {
-        if (ShouldVote)
-        {
-            // This should be done somewhere else, there should be a function that sets the dictionary when a choice is presented
-            if (!choiceTallies.ContainsKey(choice))
-                choiceTallies.Add(choice, 0);            
+        // This should be done somewhere else, there should be a function that sets the dictionary when a choice is presented
+        if (!choiceTallies.ContainsKey(choice))
+            choiceTallies.Add(choice, 0);
 
-            choiceTallies[choice]++;
+        choiceTallies[choice]++;
 
-            // Discard the last vote of that player
-            PlayerVote playerVote = idsToPlayerVotes[playerId];
-            if (choiceTallies.ContainsKey(playerVote.LastChoice))
-                choiceTallies[playerVote.LastChoice]--;
+        // Discard the last vote of that player
+        PlayerVote playerVote = idsToPlayerVotes[playerId];
+        if (choiceTallies.ContainsKey(playerVote.LastChoice))
+            choiceTallies[playerVote.LastChoice]--;
 
-            // Check to see what is currently highest voted
-            CheckVote();
-        }
+        // Check to see what is currently highest voted
+        CheckVote();
     }
 
     private void CheckVote()
@@ -134,22 +131,18 @@ public class VotingManager : MonoBehaviour
     // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
     private void SubmitVote(int playerId, Choice choice)
     {
-        if (ShouldVote)
-        {
-            playersReady++;
+        playersReady++;
 
-            if (playersReady == PlayerManager.Instance.PlayerCount)
-            {
-                StopAllCoroutines();
-                onCastFinalVote?.Invoke(majorityVote);
-            }
+        if (playersReady == PlayerManager.Instance.PlayerCount)
+        {
+            StopAllCoroutines();
+            onCastFinalVote?.Invoke(majorityVote);
         }
     }
 
     private void CancelVote(int playerId, Choice choice)
     {
-        if (ShouldVote)
-            playersReady = playersReady > 0 ? playersReady - 1 : 0;
+        playersReady = playersReady > 0 ? playersReady - 1 : 0;
     }
 
     private void InitializeDecision(string[] choices)

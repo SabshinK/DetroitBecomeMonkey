@@ -72,32 +72,41 @@ public class PlayerVote : MonoBehaviour
 
     private void StartCastVote(InputAction.CallbackContext context)
     {
-        // Only call this function when there is a new vote
-        Choice potentialChoice = ActionToEnum(context.action);
-        LastChoice = choiceCode;
-        if (potentialChoice != LastChoice)
+        if (VotingManager.Instance.ShouldVote)
         {
-            choiceCode = potentialChoice;
-            onStartCastVote?.Invoke(PlayerId, choiceCode);
+            // Only call this function when there is a new vote
+            Choice potentialChoice = ActionToEnum(context.action);
+            LastChoice = choiceCode;
+            if (potentialChoice != LastChoice)
+            {
+                choiceCode = potentialChoice;
+                onStartCastVote?.Invoke(PlayerId, choiceCode);
+            }
         }
     }
 
     private void FinishCastVote(InputAction.CallbackContext context)
     {
-        Choice code = ActionToEnum(context.action);
-        if (choiceCode == code)
+        if (VotingManager.Instance.ShouldVote)
         {
-            didCast = true;
-            onFinishCastVote?.Invoke(PlayerId, choiceCode);
+            Choice code = ActionToEnum(context.action);
+            if (choiceCode == code)
+            {
+                didCast = true;
+                onFinishCastVote?.Invoke(PlayerId, choiceCode);
+            }
         }
     }
 
     private void CancelCastVote(InputAction.CallbackContext context)
     {
-        if (didCast)
+        if (VotingManager.Instance.ShouldVote)
         {
-            onCancelCastVote?.Invoke(PlayerId, choiceCode);
-            didCast = false;
+            if (didCast)
+            {
+                onCancelCastVote?.Invoke(PlayerId, choiceCode);
+                didCast = false;
+            }
         }
     }
 
