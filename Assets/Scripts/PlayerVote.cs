@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 public class PlayerVote : MonoBehaviour
 {
@@ -17,10 +15,8 @@ public class PlayerVote : MonoBehaviour
     public event CastVote onFinishCastVote;
     public event CastVote onCancelCastVote;
 
-    private InputAction voteAAction;
-    private InputAction voteBAction;
+    private InputAction[] voteActions;
 
-    private InputAction choice;
     private Choice choiceCode;
 
     private bool didCast;
@@ -28,33 +24,38 @@ public class PlayerVote : MonoBehaviour
     private void Awake()
     {
         PlayerInput playerInput = GetComponent<PlayerInput>();
-        voteAAction = playerInput.actions.FindAction("Vote A");
-        voteBAction = playerInput.actions.FindAction("Vote B");
+        voteActions = new InputAction[] 
+        {
+            playerInput.actions.FindAction("Vote A"),
+            playerInput.actions.FindAction("Vote B"),
+            playerInput.actions.FindAction("Vote C"),
+            playerInput.actions.FindAction("Vote D")
+        };
 
-        LastChoice = Choice.C;
-        choiceCode = Choice.C;
+        LastChoice = Choice.Default;
+        choiceCode = Choice.Default;
     }
 
     private void OnEnable()
     {
-        voteAAction.started += StartCastVote;
-        voteBAction.started += StartCastVote;
-        voteAAction.performed += FinishCastVote;
-        voteBAction.performed += FinishCastVote;
-        voteAAction.canceled += CancelCastVote;
-        voteBAction.canceled += CancelCastVote;
+        foreach (InputAction voteAction in voteActions)
+        {
+            voteAction.started += StartCastVote;
+            voteAction.performed += FinishCastVote;
+            voteAction.canceled += CancelCastVote;
+        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        voteAAction.started -= StartCastVote;
-        voteBAction.started -= StartCastVote;
-        voteAAction.performed -= FinishCastVote;
-        voteBAction.performed -= FinishCastVote;
-        voteAAction.canceled -= CancelCastVote;
-        voteBAction.canceled -= CancelCastVote;
+        foreach (InputAction voteAction in voteActions)
+        {
+            voteAction.started -= StartCastVote;
+            voteAction.performed -= FinishCastVote;
+            voteAction.canceled -= CancelCastVote;
+        }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -64,8 +65,8 @@ public class PlayerVote : MonoBehaviour
         Testing test = FindObjectOfType<Testing>();
         if (test != null)
             test.onPresentChoice.AddListener(() => { 
-                LastChoice = Choice.C;
-                choiceCode = Choice.C;
+                LastChoice = Choice.Default;
+                choiceCode = Choice.Default;
             });
     }
 
@@ -76,9 +77,7 @@ public class PlayerVote : MonoBehaviour
         LastChoice = choiceCode;
         if (potentialChoice != LastChoice)
         {
-            choice = context.action;
             choiceCode = potentialChoice;
-
             onStartCastVote?.Invoke(PlayerId, choiceCode);
         }
     }
@@ -104,19 +103,23 @@ public class PlayerVote : MonoBehaviour
 
     private Choice ActionToEnum(InputAction action)
     {
-        // Turn the choice action into an easily readable enum
-        if (action == voteAAction)
-            return Choice.A;
-        else if (action == voteBAction)
-            return Choice.B;
-        else
-            return Choice.C;
+        // Cast the index as a vote choice if the action matches
+        for (int i = 0; i < voteActions.Length; i++)
+        {
+            if (action == voteActions[i])
+                return (Choice)i;
+        }
+
+        // If the action isn't a valid choice return default
+        return Choice.Default;
     }
 }
 
 public enum Choice
 {
-    A = 1,
-    B = 2,
-    C = 3
+    A = 0,
+    B = 1,
+    C = 2,
+    D = 3,
+    Default = 4
 }

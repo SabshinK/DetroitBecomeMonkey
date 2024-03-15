@@ -44,6 +44,24 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=1.5)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Vote C"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca338d75-75dc-4fdc-ba94-6d744f332ba8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1.5)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Vote D"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbd7c6ea-d96f-4f05-9317-d304581fe77a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1.5)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -73,6 +91,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""94da560c-bd86-455e-a851-4a0868ab3df0"",
                     ""path"": ""<HID::Logitech Logitech RumblePad 2 USB>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ebae69d-7fef-4a45-85a4-cf25e15d7208"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -112,6 +141,105 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Vote B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f61060ab-d410-4681-b2db-3efb3769aba6"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote B"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbfe453d-108a-44fe-b87e-65cf877680cd"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote C"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3ff6057-64c9-4c4d-a651-fceff85db198"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote C"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f3206a6-e731-40d2-baf5-03d7cd079737"",
+                    ""path"": ""<HID::Logitech Logitech RumblePad 2 USB>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote C"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66420c1f-f1bf-417f-b553-5e294b7ce941"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote C"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""136dfcaa-46a2-4581-8817-148396f04520"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote D"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cfc4cd5-a2f4-40f6-8670-4b7027c3be6c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote D"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ed61a3a-7067-4d0e-829b-bb272b1e2043"",
+                    ""path"": ""<HID::Logitech Logitech RumblePad 2 USB>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote D"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fca68bf9-2725-4786-8588-2cba8dcbda3d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vote D"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +250,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_VoteA = m_Player.FindAction("Vote A", throwIfNotFound: true);
         m_Player_VoteB = m_Player.FindAction("Vote B", throwIfNotFound: true);
+        m_Player_VoteC = m_Player.FindAction("Vote C", throwIfNotFound: true);
+        m_Player_VoteD = m_Player.FindAction("Vote D", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,12 +315,16 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_VoteA;
     private readonly InputAction m_Player_VoteB;
+    private readonly InputAction m_Player_VoteC;
+    private readonly InputAction m_Player_VoteD;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
         public PlayerActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @VoteA => m_Wrapper.m_Player_VoteA;
         public InputAction @VoteB => m_Wrapper.m_Player_VoteB;
+        public InputAction @VoteC => m_Wrapper.m_Player_VoteC;
+        public InputAction @VoteD => m_Wrapper.m_Player_VoteD;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +340,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @VoteB.started += instance.OnVoteB;
             @VoteB.performed += instance.OnVoteB;
             @VoteB.canceled += instance.OnVoteB;
+            @VoteC.started += instance.OnVoteC;
+            @VoteC.performed += instance.OnVoteC;
+            @VoteC.canceled += instance.OnVoteC;
+            @VoteD.started += instance.OnVoteD;
+            @VoteD.performed += instance.OnVoteD;
+            @VoteD.canceled += instance.OnVoteD;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -216,6 +356,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @VoteB.started -= instance.OnVoteB;
             @VoteB.performed -= instance.OnVoteB;
             @VoteB.canceled -= instance.OnVoteB;
+            @VoteC.started -= instance.OnVoteC;
+            @VoteC.performed -= instance.OnVoteC;
+            @VoteC.canceled -= instance.OnVoteC;
+            @VoteD.started -= instance.OnVoteD;
+            @VoteD.performed -= instance.OnVoteD;
+            @VoteD.canceled -= instance.OnVoteD;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -237,5 +383,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     {
         void OnVoteA(InputAction.CallbackContext context);
         void OnVoteB(InputAction.CallbackContext context);
+        void OnVoteC(InputAction.CallbackContext context);
+        void OnVoteD(InputAction.CallbackContext context);
     }
 }

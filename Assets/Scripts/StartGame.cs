@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class StartGame : MonoBehaviour
+public class StartGame : MonoBehaviour, INarrative
 {
+    public event INarrative.ChoiceEvent onPresentChoice;
+
     private List<PlayerVote> playerVotes;
 
     private int playersReady = 0;

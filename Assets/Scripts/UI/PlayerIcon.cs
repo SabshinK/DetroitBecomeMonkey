@@ -13,8 +13,9 @@ public class PlayerIcon : MonoBehaviour
 
     [SerializeField] private Image selectionStatus;
 
-    private InputAction voteAAction;
-    private InputAction voteBAction;
+    //private InputAction voteAAction;
+    //private InputAction voteBAction;
+    private InputAction[] voteActions;
 
     private Coroutine currentRoutine;
 
@@ -28,21 +29,39 @@ public class PlayerIcon : MonoBehaviour
 
     private void OnDisable()
     {
-        voteAAction.started -= StartTimer;
-        voteBAction.started -= StartTimer;
-        voteAAction.canceled -= CancelTimer;
-        voteBAction.canceled -= CancelTimer;
+        foreach (InputAction voteAction in voteActions)
+        {
+            voteAction.started -= StartTimer;
+            voteAction.canceled -= CancelTimer;
+        }
+
+        //voteAAction.started -= StartTimer;
+        //voteBAction.started -= StartTimer;
+        //voteAAction.canceled -= CancelTimer;
+        //voteBAction.canceled -= CancelTimer;
     }
 
     public void RegisterPlayer(PlayerInput playerInput, int playerId)
     {
-        voteAAction = playerInput.actions.FindAction("Vote A");
-        voteBAction = playerInput.actions.FindAction("Vote B");
-        
-        voteAAction.started += StartTimer;
-        voteBAction.started += StartTimer;
-        voteAAction.canceled += CancelTimer;
-        voteBAction.canceled += CancelTimer;
+        //voteAAction = playerInput.actions.FindAction("Vote A");
+        //voteBAction = playerInput.actions.FindAction("Vote B");
+        voteActions = new InputAction[]
+        {
+            playerInput.actions.FindAction("Vote A"),
+            playerInput.actions.FindAction("Vote B"),
+            playerInput.actions.FindAction("Vote C"),
+            playerInput.actions.FindAction("Vote D")
+        };
+
+        foreach (InputAction voteAction in voteActions)
+        {
+            voteAction.started += StartTimer;
+            voteAction.canceled += CancelTimer;
+        }
+        //voteAAction.started += StartTimer;
+        //voteBAction.started += StartTimer;
+        //voteAAction.canceled += CancelTimer;
+        //voteBAction.canceled += CancelTimer;
 
         text.text = playerId.ToString();
         //iconSprite.color = iconColor;
@@ -50,20 +69,26 @@ public class PlayerIcon : MonoBehaviour
 
     private void StartTimer(InputAction.CallbackContext context)
     {
-        if (currentRoutine != null)
-            StopCoroutine(currentRoutine);
+        if (VotingManager.Instance.ShouldVote) 
+        {
+            if (currentRoutine != null)
+                StopCoroutine(currentRoutine);
 
-        var interaction = context.interaction as HoldInteraction;
-        currentRoutine = StartCoroutine(FillBar(interaction.duration));
+            var interaction = context.interaction as HoldInteraction;
+            currentRoutine = StartCoroutine(FillBar(interaction.duration));
+        }
     }
 
     private void CancelTimer(InputAction.CallbackContext context)
     {
-        if (currentRoutine != null)
-            StopCoroutine(currentRoutine);
+        if (VotingManager.Instance.ShouldVote) 
+        {
+            if (currentRoutine != null)
+                StopCoroutine(currentRoutine);
 
-        selectionStatus.fillAmount = 0f;
-        timer = 0f;
+            selectionStatus.fillAmount = 0f;
+            timer = 0f;
+        }
     }
 
     private IEnumerator FillBar(float holdDuration)

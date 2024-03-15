@@ -5,10 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NarrativeHandler : MonoBehaviour
+public class NarrativeHandler : MonoBehaviour, INarrative
 {
-    public delegate void ChoiceEvent(string[] choices);
-    public event ChoiceEvent onPresentChoice;
+    public event INarrative.ChoiceEvent onPresentChoice;
 
     [SerializeField] private ShotSequence[] shotSequences;
 
@@ -16,7 +15,7 @@ public class NarrativeHandler : MonoBehaviour
     [SerializeField] private TMP_Text dialogueBox;
 
     private int currentSequence;
-    private int dialogueIndex;
+    private int dialogueIndex;    
 
     private void Awake()
     {

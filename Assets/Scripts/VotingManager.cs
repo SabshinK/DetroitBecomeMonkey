@@ -15,6 +15,8 @@ public class VotingManager : MonoBehaviour
 
     public event FinalVoteEvent onUpdateMajorityVote;
     public event FinalVoteEvent onCastFinalVote;
+
+    public bool ShouldVote { get; private set; }
     
     [SerializeField] private NarrativeHandler testing;
 
@@ -22,9 +24,7 @@ public class VotingManager : MonoBehaviour
     
     private Dictionary<Choice, int> choiceTallies;
     private Choice majorityVote;
-    private int playersReady = 0;
-
-    private bool shouldVote;
+    private int playersReady = 0;    
 
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class VotingManager : MonoBehaviour
             playerVote.onCancelCastVote += CancelVote;
         }
 
-        onCastFinalVote += (Choice choice) => { shouldVote = false; };
+        onCastFinalVote += (Choice choice) => { ShouldVote = false; };
     }
 
     private void OnDisable()
@@ -73,7 +73,7 @@ public class VotingManager : MonoBehaviour
     // These two functions are just getting what the current voting status is like, players have to all hold buttons to submit
     private void RecordVote(int playerId, Choice choice)
     {
-        if (shouldVote)
+        if (ShouldVote)
         {
             // This should be done somewhere else, there should be a function that sets the dictionary when a choice is presented
             if (!choiceTallies.ContainsKey(choice))
@@ -115,7 +115,7 @@ public class VotingManager : MonoBehaviour
     // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
     private void SubmitVote(int playerId, Choice choice)
     {
-        if (shouldVote)
+        if (ShouldVote)
         {
             playersReady++;
 
@@ -129,7 +129,7 @@ public class VotingManager : MonoBehaviour
 
     private void CancelVote(int playerId, Choice choice)
     {
-        if (shouldVote)
+        if (ShouldVote)
             playersReady = playersReady > 0 ? playersReady - 1 : 0;
     }
 
@@ -144,7 +144,7 @@ public class VotingManager : MonoBehaviour
 
         choiceTallies = new Dictionary<Choice, int>();
 
-        shouldVote = true;
+        ShouldVote = true;
     }
 
     private IEnumerator TimedVote(float voteTime)
@@ -154,4 +154,11 @@ public class VotingManager : MonoBehaviour
         // Cast the final vote regardless of whether players are ready
         onCastFinalVote?.Invoke(majorityVote);
     }
+}
+
+public enum DecisionMode
+{
+    Unanimous,
+    Majority,
+    Percentile
 }
