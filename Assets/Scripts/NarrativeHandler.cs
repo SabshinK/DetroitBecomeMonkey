@@ -40,20 +40,23 @@ public class NarrativeHandler : MonoBehaviour, INarrative
 
     public void NextLine()
     {
+        // Create a local for simplicity purposes
+        ShotSequence current = shotSequences[currentSequence];
+
         dialogueIndex++;
 
-        if (dialogueIndex == shotSequences[currentSequence].dialogue.Length)
-            dialogueIndex = shotSequences[currentSequence].dialogue.Length - 1;
+        if (dialogueIndex == current.dialogue.Length)
+            dialogueIndex = current.dialogue.Length - 1;
 
         // If this is the last dialogue, do stuff
-        if (dialogueIndex == shotSequences[currentSequence].dialogue.Length - 1)
+        if (dialogueIndex == current.dialogue.Length - 1)
         {
             // If there are choices
-            if (shotSequences[currentSequence].choices.Length > 0)
+            if (current.HasDecision)
             {
                 // Theoretically disable the buttons too
 
-                onPresentChoice?.Invoke(shotSequences[currentSequence].choices);
+                onPresentChoice?.Invoke(current.decision.choices);
             }
             else
             {
@@ -63,7 +66,7 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         }
         else
         {
-            dialogueBox.text = shotSequences[currentSequence].dialogue[dialogueIndex];
+            dialogueBox.text = current.dialogue[dialogueIndex];
         }
     }
 

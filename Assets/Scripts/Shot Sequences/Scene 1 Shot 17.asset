@@ -15,6 +15,12 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 1ceff7e324867f742a21f37cd3f9439b, type: 3}
   dialogue:
   - Which way are we going?
-  choices:
-  - The Riskier Way
-  - The Safer Way
+  decision:
+    choices:
+    - The Riskier Way
+    - The Safer Way
+    consequences:
+    - {fileID: 0}
+    - {fileID: 0}
+    decisionMode: 1
+    isTimed: 0

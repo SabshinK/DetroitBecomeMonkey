@@ -15,4 +15,8 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 8e46643370eeb8842bb9e3dd3f51f48b, type: 3}
   dialogue:
   - 
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0

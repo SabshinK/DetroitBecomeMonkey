@@ -13,8 +13,6 @@ public class PlayerIcon : MonoBehaviour
 
     [SerializeField] private Image selectionStatus;
 
-    //private InputAction voteAAction;
-    //private InputAction voteBAction;
     private InputAction[] voteActions;
 
     private Coroutine currentRoutine;
@@ -34,17 +32,10 @@ public class PlayerIcon : MonoBehaviour
             voteAction.started -= StartTimer;
             voteAction.canceled -= CancelTimer;
         }
-
-        //voteAAction.started -= StartTimer;
-        //voteBAction.started -= StartTimer;
-        //voteAAction.canceled -= CancelTimer;
-        //voteBAction.canceled -= CancelTimer;
     }
 
     public void RegisterPlayer(PlayerInput playerInput, int playerId)
     {
-        //voteAAction = playerInput.actions.FindAction("Vote A");
-        //voteBAction = playerInput.actions.FindAction("Vote B");
         voteActions = new InputAction[]
         {
             playerInput.actions.FindAction("Vote A"),
@@ -58,10 +49,6 @@ public class PlayerIcon : MonoBehaviour
             voteAction.started += StartTimer;
             voteAction.canceled += CancelTimer;
         }
-        //voteAAction.started += StartTimer;
-        //voteBAction.started += StartTimer;
-        //voteAAction.canceled += CancelTimer;
-        //voteBAction.canceled += CancelTimer;
 
         text.text = playerId.ToString();
         //iconSprite.color = iconColor;
