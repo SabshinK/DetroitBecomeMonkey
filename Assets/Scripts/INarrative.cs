@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface INarrative
 {
-    public delegate void ChoiceEvent(string[] choices);
+    public delegate void ChoiceEvent(Decision decision);
     public event ChoiceEvent onPresentChoice;
 }

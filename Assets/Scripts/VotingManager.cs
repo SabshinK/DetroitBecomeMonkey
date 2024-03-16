@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +26,8 @@ public class VotingManager : MonoBehaviour
     private Choice majorityVote;
     private int playersReady = 0;
 
+    //private KeyValuePair<Choice, int> highestVote;
+
     private void Awake()
     {
         // Singleton logic
@@ -39,11 +40,11 @@ public class VotingManager : MonoBehaviour
         }
 
         // Populate player vote dictionary
-        foreach (KeyValuePair<int, PlayerInput> player in PlayerManager.Instance.idsToPlayers)
-        {
-            PlayerVote playerVote = player.Value.GetComponent<PlayerVote>();
-            idsToPlayerVotes.Add(player.Key, playerVote);
-        }
+        //foreach (KeyValuePair<int, PlayerInput> player in PlayerManager.Instance.idsToPlayers)
+        //{
+        //    PlayerVote playerVote = player.Value.GetComponent<PlayerVote>();
+        //    idsToPlayerVotes.Add(player.Key, playerVote);
+        //}
 
         choiceTallies = new Dictionary<Choice, int>();
     }
@@ -53,12 +54,12 @@ public class VotingManager : MonoBehaviour
         if (narrative != null)
             narrative.onPresentChoice += InitializeDecision;
 
-        foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
-        {
-            playerVote.onStartCastVote += RecordVote;
-            playerVote.onFinishCastVote += SubmitVote;
-            playerVote.onCancelCastVote += CancelVote;
-        }
+        //foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
+        //{
+        //    playerVote.onStartCastVote += RecordVote;
+        //    playerVote.onFinishCastVote += SubmitVote;
+        //    playerVote.onCancelCastVote += CancelVote;
+        //}
 
         onCastFinalVote += (Choice choice) => { ShouldVote = false; };
 
@@ -89,12 +90,21 @@ public class VotingManager : MonoBehaviour
             narratives[0].onPresentChoice += InitializeDecision;
     }
 
+    public void RegisterPlayer(int playerId, PlayerVote playerVote)
+    {
+        idsToPlayerVotes.Add(playerId, playerVote);
+
+        playerVote.onStartCastVote += RecordVote;
+        playerVote.onFinishCastVote += SubmitVote;
+        playerVote.onCancelCastVote += CancelVote;
+    }
+
     // These two functions are just getting what the current voting status is like, players have to all hold buttons to submit
     private void RecordVote(int playerId, Choice choice)
     {
-        // This should be done somewhere else, there should be a function that sets the dictionary when a choice is presented
+        // We don't care about the choice if it's not in the dictionary
         if (!choiceTallies.ContainsKey(choice))
-            choiceTallies.Add(choice, 0);
+            return;
 
         choiceTallies[choice]++;
 
@@ -124,8 +134,13 @@ public class VotingManager : MonoBehaviour
         }
 
         // Broadcast the current highest vote, or not if there is no consensus
-        majorityVote = differentValues ? highestVote.Key : Choice.C;
+        majorityVote = differentValues ? highestVote.Key : Choice.Default;
         onUpdateMajorityVote?.Invoke(majorityVote);
+    }
+
+    private void CheckVoteUnanimous()
+    {
+
     }
 
     // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
@@ -145,20 +160,29 @@ public class VotingManager : MonoBehaviour
         playersReady = playersReady > 0 ? playersReady - 1 : 0;
     }
 
-    private void InitializeDecision(string[] choices)
+    private void InitializeDecision(Decision decision)
     {
-        //if (isTimed)
-        //    StartCoroutine(TimedVote(voteTime));
+        if (decision.isTimed)
+            StartCoroutine(TimedVote(voteTime));
 
-        majorityVote = Choice.C;
+        // Reset state for everything
+        majorityVote = Choice.Default;
         onUpdateMajorityVote?.Invoke(majorityVote);
         playersReady = 0;
 
+        // Create the dictionary
         choiceTallies = new Dictionary<Choice, int>();
+        if (decision.choices != null)
+        {
+            for (int i = 0; i < decision.choices.Length; i++)
+                choiceTallies.Add((Choice)i, 0);
+        }
+
 
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
             playerVote.ResetVote();
 
+        // Time to vote!
         ShouldVote = true;
     }
 

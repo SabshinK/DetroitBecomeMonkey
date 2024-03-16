@@ -56,7 +56,7 @@ public class NarrativeHandler : MonoBehaviour, INarrative
             {
                 // Theoretically disable the buttons too
 
-                onPresentChoice?.Invoke(current.decision.choices);
+                onPresentChoice?.Invoke(current.decision);
             }
             else
             {

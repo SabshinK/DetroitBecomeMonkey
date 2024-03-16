@@ -19,6 +19,7 @@ MonoBehaviour:
     choices:
     - The Riskier Way
     - The Safer Way
+    - shmoop
     consequences:
     - {fileID: 0}
     - {fileID: 0}

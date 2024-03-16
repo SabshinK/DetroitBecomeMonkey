@@ -8,18 +8,19 @@ using UnityEngine.UI;
 
 public class VotingUI : MonoBehaviour
 {
+    [SerializeField] private GameObject[] choiceObjects;
+
     [SerializeField] private Transform iconParent;
-    [SerializeField] private GameObject iconAreaA;
-    [SerializeField] private GameObject iconAreaB;
+    [SerializeField] private GameObject[] iconAreas;
     [SerializeField] private GameObject iconPrefab;
 
     [SerializeField] private Animator aspectBottom;
 
     [Space]
-    [SerializeField] private TMP_Text choiceAText;
-    [SerializeField] private TMP_Text choiceBText;
+    [SerializeField] private TMP_Text[] choiceTexts;
     [SerializeField] private Animator selectionAUnderline;
     [SerializeField] private Animator selectionBUnderline;
+    [SerializeField] private Animator[] selectionUnderlines;
 
     [Space]
     [SerializeField] private Animator timerBar;
@@ -75,9 +76,18 @@ public class VotingUI : MonoBehaviour
         narrative.onPresentChoice -= PresentChoice;
     }
 
-    public void PresentChoice(string[] choices)
+    public void PresentChoice(Decision decision)
     {
-        aspectBottom.SetBool("IsPresenting", true);
+        // Enable the icon areas
+        for (int i = 0; i < choiceObjects.Length; i++)
+        {
+            choiceObjects[i].SetActive(i < decision.choices.Length);
+
+            if (i < decision.choices.Length)
+                choiceTexts[i].text = decision.choices[i];
+        }
+
+        aspectBottom.SetBool("IsPresenting", true);        
     }
 
     private void FinishChoice(Choice choice)
@@ -88,24 +98,33 @@ public class VotingUI : MonoBehaviour
             icon.transform.position = new Vector3(0, -650, 0);
         }
 
-        selectionAUnderline.SetBool("IsSelected", false);
-        selectionBUnderline.SetBool("IsSelected", false);
+        //selectionAUnderline.SetBool("IsSelected", false);
+        //selectionBUnderline.SetBool("IsSelected", false);
+        foreach (Animator selectionUnderline in selectionUnderlines)
+        {
+            if (selectionUnderline.gameObject.activeInHierarchy)
+                selectionUnderline.SetBool("IsSelected", false);
+        }
 
         aspectBottom.SetBool("IsPresenting", false);
     }
 
     private void SetSelectionUnderline(Choice choice)
     {
-        selectionAUnderline.SetBool("IsSelected", choice == Choice.A);
-        selectionBUnderline.SetBool("IsSelected", choice == Choice.B);
+        Debug.Log(choice);
+        for (int i = 0; i < selectionUnderlines.Length; i++)
+        {
+            Animator selectionUnderline = selectionUnderlines[i];
+            if (selectionUnderline.gameObject.activeInHierarchy)
+                selectionUnderline.SetBool("IsSelected", choice == (Choice)i);
+        }
     }
 
     private void SetPlayerIconLocation(int playerId, Choice choice)
     {
         // I need to access the player icon of the given id and move it under the correct icon area
-        if (choice == Choice.A)
-            idsToIcons[playerId].transform.SetParent(iconAreaA.transform.GetChild(0));
-        else if (choice == Choice.B)
-            idsToIcons[playerId].transform.SetParent(iconAreaB.transform.GetChild(0));
+        Transform iconAreaParent = iconAreas[(int)choice].transform.GetChild(0);
+        if (iconAreaParent.gameObject.activeInHierarchy)
+            idsToIcons[playerId].transform.SetParent(iconAreaParent);
     }
 }

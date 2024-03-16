@@ -16,15 +16,15 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+        InputManager = GetComponent<PlayerInputManager>();
+
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-
-        InputManager = GetComponent<PlayerInputManager>();
+        }        
     }
 
     private void OnEnable()
@@ -48,6 +48,7 @@ public class PlayerManager : MonoBehaviour
         // Initialize player vote
         PlayerVote playerVote = playerInput.GetComponent<PlayerVote>();
         playerVote.PlayerId = transform.childCount;
+        VotingManager.Instance.RegisterPlayer(transform.childCount, playerVote);
 
         Debug.Log(transform.childCount);
     }
