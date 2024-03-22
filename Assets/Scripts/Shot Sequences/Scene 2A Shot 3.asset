@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
-  m_Name: Scene 2A Shot 1
+  m_Name: Scene 2A Shot 3
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 62d2685d954ea2f46b1a1d7ff01285aa, type: 3}
   dialogue:
@@ -21,4 +21,4 @@ MonoBehaviour:
     decisionMode: 0
     isTimed: 0
   previousSequence: {fileID: 0}
-  nextSequence: {fileID: 11400000, guid: 0375a228492b6a144a7e59526445f1aa, type: 2}
+  nextSequence: {fileID: 11400000, guid: 3d5ab3898e1cf2147af0853741c347fc, type: 2}
