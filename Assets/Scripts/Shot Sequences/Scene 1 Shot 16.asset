@@ -16,4 +16,10 @@ MonoBehaviour:
   dialogue:
   - 'Dylan: "I understand Professor Lin, but time is not on our side. A shortcut
     might just be what we need right now!!" '
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: 3d5ab3898e1cf2147af0853741c347fc, type: 2}

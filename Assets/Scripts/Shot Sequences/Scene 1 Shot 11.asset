@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: aa316a7ab8b394c47bc41cb6f2cf6840, type: 3}
+  shot: {fileID: 21300000, guid: 57258c1f9b125c94f87d0a239eecc91a, type: 3}
   dialogue:
   - Charles and Dylan walk in the cave.
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: 0c41d356beca39f40bfd318f03743e71, type: 2}

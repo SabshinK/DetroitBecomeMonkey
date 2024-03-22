@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 10
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 8e46643370eeb8842bb9e3dd3f51f48b, type: 3}
+  shot: {fileID: 21300000, guid: e138325fc05fd394695577279c5b0af6, type: 3}
   dialogue:
   - "Charles: With a determined nod toward the cave entrance. \"They must\u2019ve
     ventured further into this cave somehow. It's the only path they could've taken
     without crossing back past you. Let's go find them!\""
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: 43eb7b422c4444345b024fbf59b6a11c, type: 2}

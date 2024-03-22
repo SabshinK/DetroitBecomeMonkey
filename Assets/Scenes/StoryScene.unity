@@ -1653,6 +1653,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 66984189a86cd3c4e9e97defaceca4dd, type: 2}
   - {fileID: 11400000, guid: f13183c1313c89143a7a44505e2d4a0e, type: 2}
   - {fileID: 11400000, guid: 3d5ab3898e1cf2147af0853741c347fc, type: 2}
+  currentSequence: {fileID: 11400000, guid: 71603ba2a1cab6e4aa0b9cc0f5611f54, type: 2}
   shot: {fileID: 1377614433}
   dialogueBox: {fileID: 1321537428}
 --- !u!1001 &1441491407

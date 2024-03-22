@@ -16,4 +16,10 @@ MonoBehaviour:
   dialogue:
   - 'C: "It''s not your fault Dylan. We are in uncharated area here. We need to stay
     focused on finding the students!"'
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: a02fdbb865a8a3e48af20b93543b7255, type: 2}

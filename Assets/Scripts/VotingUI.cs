@@ -52,7 +52,7 @@ public class VotingUI : MonoBehaviour
 
     private void OnEnable()
     {
-        VotingManager.Instance.onUpdateMajorityVote += SetSelectionUnderline;
+        VotingManager.Instance.onUpdateFinalVote += SetSelectionUnderline;
         VotingManager.Instance.onCastFinalVote += FinishChoice;
 
         foreach (PlayerVote playerVote in VotingManager.Instance.idsToPlayerVotes.Values)
@@ -65,7 +65,7 @@ public class VotingUI : MonoBehaviour
 
     private void OnDisable()
     {
-        VotingManager.Instance.onUpdateMajorityVote -= SetSelectionUnderline;
+        VotingManager.Instance.onUpdateFinalVote -= SetSelectionUnderline;
         VotingManager.Instance.onCastFinalVote -= FinishChoice;
 
         foreach (PlayerVote playerVote in VotingManager.Instance.idsToPlayerVotes.Values)

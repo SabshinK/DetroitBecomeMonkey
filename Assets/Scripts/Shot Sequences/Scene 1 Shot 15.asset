@@ -17,4 +17,10 @@ MonoBehaviour:
   - 'Charles: "I also want to get to them as soon as possible, but if we get lost
     or injured rushing in blind, it''s going to cost us more than just time, Dylan!
     Following the map is the more reasonable choice here."'
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: f13183c1313c89143a7a44505e2d4a0e, type: 2}

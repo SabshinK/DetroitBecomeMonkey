@@ -13,7 +13,7 @@ public class VotingManager : MonoBehaviour
 
     public delegate void FinalVoteEvent(Choice choice);
 
-    public event FinalVoteEvent onUpdateMajorityVote;
+    public event FinalVoteEvent onUpdateFinalVote;
     public event FinalVoteEvent onCastFinalVote;
 
     public bool ShouldVote { get; private set; }
@@ -23,8 +23,10 @@ public class VotingManager : MonoBehaviour
     [SerializeField] private float voteTime = 10f;
     
     private Dictionary<Choice, int> choiceTallies;
-    private Choice majorityVote;
+    private Choice FinalVote;
     private int playersReady = 0;
+
+    private Decision currentDecision;
 
     //private KeyValuePair<Choice, int> highestVote;
 
@@ -61,7 +63,9 @@ public class VotingManager : MonoBehaviour
         //    playerVote.onCancelCastVote += CancelVote;
         //}
 
-        onCastFinalVote += (Choice choice) => { ShouldVote = false; };
+        onCastFinalVote += (Choice choice) => { 
+            if (currentDecision.decisionMode != DecisionMode.Calibration) ShouldVote = false; 
+        };
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -82,6 +86,8 @@ public class VotingManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        ShouldVote = false;
+
         // Get all INarratives in the scene, 
         MonoBehaviour[] monoBehaviours = FindObjectsOfType<MonoBehaviour>();
         INarrative[] narratives = (from r_narratives in monoBehaviours where r_narratives.GetType().GetInterfaces().Any(k => k == typeof(INarrative)) select (INarrative)r_narratives).ToArray();
@@ -119,28 +125,47 @@ public class VotingManager : MonoBehaviour
 
     private void CheckVote()
     {
-        // Find the current highest vote, also have a boolean to check and make sure the values aren't all the same
-        // This checking method is based on majority, not percentile
-        bool differentValues = false;
-        KeyValuePair<Choice, int> highestVote = choiceTallies.ToArray()[0];
-        foreach (KeyValuePair<Choice, int> vote in choiceTallies)
+        if (currentDecision.decisionMode == DecisionMode.Majority)
         {
-            if (vote.Value != highestVote.Value || choiceTallies.Count() == 1)
+            // Find the current highest vote, also have a boolean to check and make sure the values aren't all the same
+            // This checking method is based on majority, not percentile
+            bool differentValues = false;
+            KeyValuePair<Choice, int> highestVote = choiceTallies.ToArray()[0];
+            foreach (KeyValuePair<Choice, int> vote in choiceTallies)
             {
-                differentValues = true;
-                if (vote.Value > highestVote.Value)
-                    highestVote = vote;
+                if (vote.Value != highestVote.Value || choiceTallies.Count() == 1)
+                {
+                    differentValues = true;
+                    if (vote.Value > highestVote.Value)
+                        highestVote = vote;
+                }
             }
+
+            // Broadcast the current highest vote, or not if there is no consensus
+            FinalVote = differentValues ? highestVote.Key : Choice.Default;
+            
+        }
+        else if (currentDecision.decisionMode == DecisionMode.Unanimous)
+        {
+            // Find the vote that all players agree on, otherwise broadbast undecided
+            Choice chosenVote = Choice.Default;
+            foreach (KeyValuePair<Choice, int> vote in choiceTallies)
+            {
+                if (vote.Value == idsToPlayerVotes.Count)
+                {
+                    chosenVote = vote.Key;
+                    break;
+                }
+            }
+
+            FinalVote = chosenVote;
+        }
+        else if (currentDecision.decisionMode == DecisionMode.Percentile)
+        {
+            // Not implemented
         }
 
-        // Broadcast the current highest vote, or not if there is no consensus
-        majorityVote = differentValues ? highestVote.Key : Choice.Default;
-        onUpdateMajorityVote?.Invoke(majorityVote);
-    }
-
-    private void CheckVoteUnanimous()
-    {
-
+        onUpdateFinalVote?.Invoke(FinalVote);
     }
 
     // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
@@ -151,7 +176,7 @@ public class VotingManager : MonoBehaviour
         if (playersReady == PlayerManager.Instance.PlayerCount)
         {
             StopAllCoroutines();
-            onCastFinalVote?.Invoke(majorityVote);
+            onCastFinalVote?.Invoke(FinalVote);
         }
     }
 
@@ -162,12 +187,14 @@ public class VotingManager : MonoBehaviour
 
     private void InitializeDecision(Decision decision)
     {
+        currentDecision = decision;
+
         if (decision.isTimed)
             StartCoroutine(TimedVote(voteTime));
 
         // Reset state for everything
-        majorityVote = Choice.Default;
-        onUpdateMajorityVote?.Invoke(majorityVote);
+        FinalVote = Choice.Default;
+        onUpdateFinalVote?.Invoke(FinalVote);
         playersReady = 0;
 
         // Create the dictionary
@@ -177,8 +204,8 @@ public class VotingManager : MonoBehaviour
             for (int i = 0; i < decision.choices.Length; i++)
                 choiceTallies.Add((Choice)i, 0);
         }
-
-
+        
+        // Reset all the playerVotes
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
             playerVote.ResetVote();
 
@@ -191,7 +218,7 @@ public class VotingManager : MonoBehaviour
         yield return new WaitForSeconds(voteTime);
 
         // Cast the final vote regardless of whether players are ready
-        onCastFinalVote?.Invoke(majorityVote);
+        onCastFinalVote?.Invoke(FinalVote);
     }
 }
 
@@ -199,5 +226,6 @@ public enum DecisionMode
 {
     Unanimous,
     Majority,
-    Percentile
+    Percentile,
+    Calibration
 }

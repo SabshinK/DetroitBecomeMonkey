@@ -12,6 +12,9 @@ public class ShotSequence : ScriptableObject
 
     public Decision decision;
 
+    public ShotSequence previousSequence;
+    public ShotSequence nextSequence;
+
     public bool HasDecision => !(decision.choices == null || decision.choices.Length == 0);
 }
 

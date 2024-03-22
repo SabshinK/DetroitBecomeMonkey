@@ -16,4 +16,10 @@ MonoBehaviour:
   dialogue:
   - 'Dylan: "Yes, they were right behind me! I only turned away for a few minutes
     to make an important phone call."'
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: be52653b978a0214580dad24c8335876, type: 2}

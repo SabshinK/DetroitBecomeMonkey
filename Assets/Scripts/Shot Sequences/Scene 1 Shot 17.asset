@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 17
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 1ceff7e324867f742a21f37cd3f9439b, type: 3}
+  shot: {fileID: 21300000, guid: 53f2d7a130a3ccb458b73235c37b7a9b, type: 3}
   dialogue:
   - Which way are we going?
   decision:
@@ -21,7 +21,10 @@ MonoBehaviour:
     - The Safer Way
     - shmoop
     consequences:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: cd28062af796643449ba2c1b45e014f6, type: 2}
+    - {fileID: 11400000, guid: 71a0ef00ce8fe204ab35fc8161631512, type: 2}
+    - {fileID: 11400000, guid: 0dbbcb74e28a96c4084bade2302b5074, type: 2}
     decisionMode: 1
     isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 0}

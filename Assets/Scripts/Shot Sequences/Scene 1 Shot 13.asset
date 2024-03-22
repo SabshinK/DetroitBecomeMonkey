@@ -17,4 +17,10 @@ MonoBehaviour:
   - 'Charles, cautiously exmaining the map, says: "Approaching left down this way
     will lead to a faster path toward the end of the cave, but this tunnel isn''t
     even marked on the map. Going right will avoid many possible dangers ahead."'
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: 44080eb80999fb64b82e84c8710b8c02, type: 2}

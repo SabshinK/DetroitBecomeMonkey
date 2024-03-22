@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
-  m_Name: Scene 1 Shot 14
+  m_Name: Scene 2A Shot 1
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 84e8f16662a17ff44a64cb5db1815743, type: 3}
+  shot: {fileID: 21300000, guid: 62d2685d954ea2f46b1a1d7ff01285aa, type: 3}
   dialogue:
-  - 'Dylan: "Let''s go left here! Every second counts now. The students could be
-    hurt or worse!"'
+  - oo purple light
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
   previousSequence: {fileID: 0}
-  nextSequence: {fileID: 11400000, guid: 66984189a86cd3c4e9e97defaceca4dd, type: 2}
+  nextSequence: {fileID: 0}

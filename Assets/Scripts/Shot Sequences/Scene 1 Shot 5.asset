@@ -17,4 +17,10 @@ MonoBehaviour:
   - 'Dylan: "Yes, I deliberately told them to stay right here... I''ve been through
     every inch of this area I could access to find them, shouted until my voice was
     hoarse. It''s like they just vaporized!"'
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: 845bcb3e86ec15945a0bac38441b3fe2, type: 2}

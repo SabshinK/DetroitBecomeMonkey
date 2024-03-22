@@ -16,4 +16,10 @@ MonoBehaviour:
   dialogue:
   - 'D: They were my responisbility. I was supposed to protect their safety at all
     times, but I...'
-  choices: []
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+  previousSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: c8b375a6c4754674b97b4e5fd8170c7e, type: 2}

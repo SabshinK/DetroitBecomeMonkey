@@ -10,12 +10,16 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     public event INarrative.ChoiceEvent onPresentChoice;
     
     [SerializeField] private ShotSequence[] shotSequences;
+    [SerializeField] private ShotSequence currentSequence;
 
     [SerializeField] private Image shot;
     [SerializeField] private TMP_Text dialogueBox;
 
-    private int currentSequence;
+    //private Decision currentDecision;
+
+    //private int currentSequence;
     private int dialogueIndex;
+    private bool shouldProgress;
 
     private void Awake()
     {
@@ -34,65 +38,69 @@ public class NarrativeHandler : MonoBehaviour, INarrative
 
     private void Start()
     {
-        shot.sprite = shotSequences[0].shot;
-        dialogueBox.text = shotSequences[0].dialogue[dialogueIndex];
+        SetShotSequence(currentSequence, 0);
+        shouldProgress = true;
     }
 
     public void NextLine()
     {
-        // Create a local for simplicity purposes
-        ShotSequence current = shotSequences[currentSequence];
-
-        dialogueIndex++;
-
-        if (dialogueIndex == current.dialogue.Length)
-            dialogueIndex = current.dialogue.Length - 1;
+        // This case is for if we are in a choice, the narrative shouldn't keep going
+        if (!shouldProgress)
+            return;
 
         // If this is the last dialogue, do stuff
-        if (dialogueIndex == current.dialogue.Length - 1)
+        if (dialogueIndex == currentSequence.dialogue.Length - 1 || currentSequence.dialogue.Length == 0)
         {
-            // If there are choices
-            if (current.HasDecision)
+            if (currentSequence.HasDecision)
             {
                 // Theoretically disable the buttons too
 
-                onPresentChoice?.Invoke(current.decision);
+                onPresentChoice?.Invoke(currentSequence.decision);
+                shouldProgress = false;
             }
             else
             {
-                currentSequence++;
-                SetShotSequence();
+                SetShotSequence(currentSequence.nextSequence, 0);
             }
         }
         else
         {
-            dialogueBox.text = current.dialogue[dialogueIndex];
+            dialogueIndex++;
+            dialogueBox.text = currentSequence.dialogue[dialogueIndex];
         }
     }
 
+    // This function is pretty much unused unless we want it
     public void PreviousLine()
     {
         if (dialogueIndex > 0)
         {
             dialogueIndex--;
-            dialogueBox.text = shotSequences[currentSequence].dialogue[dialogueIndex];
+            dialogueBox.text = currentSequence.dialogue[dialogueIndex];
         }
         else
         {
-            // set the shot sequence to the previous sequence
+            ShotSequence previousSequence = currentSequence.previousSequence;
+            SetShotSequence(previousSequence, previousSequence.dialogue.Length - 1);
         }
     }
 
-    private void SetShotSequence()
+    private void SetShotSequence(ShotSequence sequence, int newDialogueIndex)
     {
-        dialogueIndex = 0;
+        dialogueIndex = newDialogueIndex;
 
-        shot.sprite = shotSequences[currentSequence].shot;
-        dialogueBox.text = shotSequences[currentSequence].dialogue[0];
+        currentSequence = sequence;
+
+        shot.sprite = sequence.shot;
+        if (sequence.dialogue.Length > 0)
+            dialogueBox.text = sequence.dialogue[newDialogueIndex];
+        else
+            dialogueBox.text = string.Empty;
     }
     
     private void ChooseBranch(Choice choice)
     {
-        throw new NotImplementedException();
+        SetShotSequence(currentSequence.decision.consequences[(int)choice], 0);
+        shouldProgress = true;
     }
 }

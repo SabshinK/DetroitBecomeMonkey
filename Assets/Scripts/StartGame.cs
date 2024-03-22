@@ -44,7 +44,7 @@ public class StartGame : MonoBehaviour, INarrative
     // Start is called after SceneManager.sceneLoaded
     private void Start()
     {
-        onPresentChoice?.Invoke(new Decision());
+        onPresentChoice?.Invoke(new Decision(DecisionMode.Calibration, false, new ShotSequence[0], new string[0]));
     }
 
     private void RegisterPlayer(PlayerInput playerInput)
