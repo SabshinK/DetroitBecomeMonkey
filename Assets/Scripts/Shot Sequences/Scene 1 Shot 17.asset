@@ -17,14 +17,12 @@ MonoBehaviour:
   - Which way are we going?
   decision:
     choices:
-    - The Riskier Way
-    - The Safer Way
-    - shmoop
+    - The Uncharted Tunnel
+    - The Safer Path
     consequences:
     - {fileID: 11400000, guid: cd28062af796643449ba2c1b45e014f6, type: 2}
     - {fileID: 11400000, guid: 71a0ef00ce8fe204ab35fc8161631512, type: 2}
-    - {fileID: 11400000, guid: 0dbbcb74e28a96c4084bade2302b5074, type: 2}
-    decisionMode: 1
+    decisionMode: 0
     isTimed: 0
   previousSequence: {fileID: 0}
   nextSequence: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 14
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 84e8f16662a17ff44a64cb5db1815743, type: 3}
+  shot: {fileID: 21300000, guid: cc54f7d565ca6d84c956207e234df0f5, type: 3}
   dialogue:
   - 'Dylan: "Let''s go left here! Every second counts now. The students could be
     hurt or worse!"'

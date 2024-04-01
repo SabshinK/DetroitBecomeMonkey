@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 2B Shot 1
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 4f0fca6627b6f724f804914daf60f799, type: 3}
+  shot: {fileID: 21300000, guid: 2f806be6adca272458010e969e8edeec, type: 3}
   dialogue:
-  - skyrim cave
+  - To be continued...
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
-  nextSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 3d5ab3898e1cf2147af0853741c347fc, type: 2}
+  nextSequence: {fileID: 11400000, guid: 71603ba2a1cab6e4aa0b9cc0f5611f54, type: 2}
