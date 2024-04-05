@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class NarrativeHandler : MonoBehaviour, INarrative
@@ -29,11 +30,29 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     private void OnEnable()
     {
         VotingManager.Instance.onCastFinalVote += ChooseBranch;
+
+        foreach (PlayerInput playerInput in PlayerManager.Instance.idsToPlayers.Values)
+        {
+            InputAction prevAction = playerInput.actions.FindAction("Previous");
+            InputAction nextAction = playerInput.actions.FindAction("Next");
+
+            prevAction.performed += PreviousLine;
+            nextAction.performed += NextLine;
+        }
     }
 
     private void OnDisable()
     {
         VotingManager.Instance.onCastFinalVote -= ChooseBranch;
+
+        foreach (PlayerInput playerInput in PlayerManager.Instance.idsToPlayers.Values)
+        {
+            InputAction prevAction = playerInput.actions.FindAction("Previous");
+            InputAction nextAction = playerInput.actions.FindAction("Next");
+
+            prevAction.performed -= PreviousLine;
+            nextAction.performed -= NextLine;
+        }
     }
 
     private void Start()
@@ -42,14 +61,15 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         shouldProgress = true;
     }
 
-    public void NextLine()
+    public void NextLine(InputAction.CallbackContext context)
     {
         // This case is for if we are in a choice, the narrative shouldn't keep going
         if (!shouldProgress)
             return;
 
+        Debug.Log(dialogueIndex);
         // If this is the last dialogue, do stuff
-        if (dialogueIndex == currentSequence.dialogue.Length - 1 || currentSequence.dialogue.Length == 0)
+        if (dialogueIndex >= currentSequence.dialogue.Length - 1)
         {
             if (currentSequence.HasDecision)
             {
@@ -67,11 +87,17 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         {
             dialogueIndex++;
             dialogueBox.text = currentSequence.dialogue[dialogueIndex];
+
+            if (currentSequence.HasDecision)
+            {
+                onPresentChoice?.Invoke(currentSequence.decision);
+                shouldProgress = false;
+            }
         }
     }
 
     // This function is pretty much unused unless we want it
-    public void PreviousLine()
+    public void PreviousLine(InputAction.CallbackContext context)
     {
         if (dialogueIndex > 0)
         {
