@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: e25685ae2d9bf6147ac90954444aa33e, type: 3}
   dialogue:
   - text: 'Charles: "What are you talking about, Dylan?"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: e61c7679681bcd441addc8230d025b50, type: 3}
   decision:
     choices: []
     consequences: []

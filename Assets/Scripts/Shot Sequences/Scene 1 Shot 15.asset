@@ -17,9 +17,9 @@ MonoBehaviour:
   - text: 'Charles: "I also want to get to them as soon as possible, but if we get
       lost or injured rushing in blind, it''s going to cost us more than just time,
       Dylan!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 3cb3d454132d6e84cb69a7dcc3547b16, type: 3}
   - text: '"Following the map is the more reasonable choice here."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 177fc0cfbaeb6464197b9d1e695b40ca, type: 3}
   decision:
     choices: []
     consequences: []

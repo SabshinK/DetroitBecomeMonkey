@@ -15,9 +15,9 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: e25685ae2d9bf6147ac90954444aa33e, type: 3}
   dialogue:
   - text: 'Charles: "I didn''t hear anything. It could be just some falling rocks."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 95c183c9f0ad9a94c85220291bf3e8bf, type: 3}
   - text: '"Anyway, we have to get moving!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f5f1549a0d057fb41a6f96c24f62f17e, type: 3}
   decision:
     choices: []
     consequences: []

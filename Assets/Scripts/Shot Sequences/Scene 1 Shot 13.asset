@@ -17,9 +17,9 @@ MonoBehaviour:
   - text: 'Charles, cautiously examining the map, says: "Approaching left down this
       way will get us to the end of the cave faster, but this tunnel is very much
       uncharted."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 4ca4cd37d5e1161458bcc10bfb961cce, type: 3}
   - text: '"Approaching right will avoid many possible dangers ahead.."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c865d3545bc1bb74a9b7dcac25fa6788, type: 3}
   decision:
     choices: []
     consequences: []

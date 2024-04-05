@@ -16,10 +16,10 @@ MonoBehaviour:
   dialogue:
   - text: "Charles, with a determined nod toward the cave entrance: \"They must\u2019ve
       ventured further into this cave somehow.\""
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f464f25c4a676104ebfb6727b75b9daf, type: 3}
   - text: '"It''s the only path they could''ve taken without crossing back past you.
       Let''s go find them!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 57ac36bec28ef0148b4050e77b73c480, type: 3}
   decision:
     choices: []
     consequences: []

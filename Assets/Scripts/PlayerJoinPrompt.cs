@@ -27,7 +27,7 @@ public class PlayerJoinPrompt : MonoBehaviour
 
     private void NextPrompt(PlayerInput playerInput)
     {
-        if (PlayerManager.Instance.PlayerCount == 2)
+        if (PlayerManager.Instance.PlayerCount >= 1)
         {
             //anim.SetTrigger("All Joined");
             text.text = "All Players Press and Hold Any Button to Continue";

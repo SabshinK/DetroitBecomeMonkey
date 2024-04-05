@@ -18,7 +18,7 @@ MonoBehaviour:
       here."'
     audio: {fileID: 8300000, guid: 1a3329576b41e214995b8183c3973834, type: 3}
   - text: '"We need to stay focused on finding the students!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: cf9d074e21c11ab4ba8c4e0bf6de1e98, type: 3}
   decision:
     choices: []
     consequences: []
