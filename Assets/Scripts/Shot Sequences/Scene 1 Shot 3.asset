@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - text: 'Dylan: "Yes, they were right behind me!"'
-    audio: {fileID: 0}
-  - text: '"I only turned away for 3 minutes to make an important phone call."'
-    audio: {fileID: 0}
+  - text: 'Dylan: "Yes, they were right around this area!"'
+    audio: {fileID: 8300000, guid: cea532aded84598478f7aee58dcdf060, type: 3}
+  - text: '"I only turned away for 3 minutes to take an important phone call."'
+    audio: {fileID: 8300000, guid: c8358a88a027853419358f4dbd64ae5b, type: 3}
   decision:
     choices: []
     consequences: []

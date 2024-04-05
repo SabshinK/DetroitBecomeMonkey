@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
-  - text: 'Charles: "And when you return, they just disappeared?"'
-    audio: {fileID: 0}
+  - text: 'Charles: "Jesus, you''re better than this Dylan... And when you return,
+      they just disappeared?"'
+    audio: {fileID: 8300000, guid: 2122efc7e1f5e97409df7f7ed1b58022, type: 3}
   decision:
     choices: []
     consequences: []

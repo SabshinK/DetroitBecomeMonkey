@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: cc54f7d565ca6d84c956207e234df0f5, type: 3}
   dialogue:
   - text: 'Dylan: "Did you hear that, Charles?"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: cf5b79dffc692684b8e7d7db82b1419d, type: 3}
   decision:
     choices: []
     consequences: []

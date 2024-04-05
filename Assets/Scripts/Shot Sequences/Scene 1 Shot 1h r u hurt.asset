@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
   - text: 'Charles: "Are you hurt Dylan?"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 749a34dd4bc6e594882cfdd712de8d76, type: 3}
   decision:
     choices: []
     consequences: []

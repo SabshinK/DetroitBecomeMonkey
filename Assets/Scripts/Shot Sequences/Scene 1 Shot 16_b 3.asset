@@ -15,9 +15,9 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: a0645de2f1d6b88439cf357868945ad2, type: 3}
   dialogue:
   - text: 'Dylan: "The echo that came from the tunnel!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 245de4699395bf747bd75b8ac9074b53, type: 3}
   - text: '"You didn''t hear that?"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0c8abd9cd3833d841b9fa63e27e895c3, type: 3}
   decision:
     choices: []
     consequences: []

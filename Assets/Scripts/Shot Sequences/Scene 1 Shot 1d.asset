@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 02b6b47511042094e927cb6531410b7c, type: 3}
   dialogue:
   - text: 'Dylan: "Professor Lin!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 74842c572f50dcc40902a397924be266, type: 3}
   decision:
     choices: []
     consequences: []

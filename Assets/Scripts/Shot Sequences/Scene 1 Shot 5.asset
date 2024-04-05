@@ -15,12 +15,12 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
   - text: 'Dylan: "Yes, I deliberately told them to stay right here..."'
-    audio: {fileID: 0}
-  - text: '"I''ve been through every inch of this area I could access to find them,
-      shouted until my voice was hoarse."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a56a1ec9e8de0914d9b20331da7c79b4, type: 3}
+  - text: '"I''ve searched through every inch of this area I could access, shouted
+      until my voice was hoarse."'
+    audio: {fileID: 8300000, guid: 1c9af6486d80e104d813ae0775e36cde, type: 3}
   - text: '"It''s like they just vaporized!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 09854998296b425428c8e5cb473b155d, type: 3}
   decision:
     choices: []
     consequences: []

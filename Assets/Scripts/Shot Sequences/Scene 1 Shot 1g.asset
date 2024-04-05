@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 02b6b47511042094e927cb6531410b7c, type: 3}
   dialogue:
   - text: 'Dylan: "The students... I lost the students..."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d97589e387839284f985670ea09217a4, type: 3}
   decision:
     choices: []
     consequences: []

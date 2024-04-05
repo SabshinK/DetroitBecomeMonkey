@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: d206c69edd2c4c044966decf0525a24d, type: 3}
   dialogue:
   - text: 'Screaming from afar: "Heyyy! Where are you guys!!!???"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 3c7c8fb6009db734996d32e258c6d760, type: 3}
   decision:
     choices: []
     consequences: []

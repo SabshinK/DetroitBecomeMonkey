@@ -15,10 +15,10 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
   - text: 'Dylan: "I told them to have a lunch break."'
-    audio: {fileID: 0}
-  - text: '"I stepped away for a few minutes! But when I returned, they were just
+    audio: {fileID: 8300000, guid: 9bded18577f545a49b9e6f455acf23b0, type: 3}
+  - text: '"I stepped away for a short while! But when I returned, they were just
       gone!"'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b2d669868c30ed34fbc8ed08adf9e33a, type: 3}
   decision:
     choices: []
     consequences: []
