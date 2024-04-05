@@ -15,12 +15,12 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: fbd4cf655bef96947b514696c35e5c30, type: 3}
   dialogue:
   - 'Charles: "I also want to get to them as soon as possible, but if we get lost
-    or injured rushing in blind, it''s going to cost us more than just time, Dylan!
-    Following the map is the more reasonable choice here."'
+    or injured rushing in blind, it''s going to cost us more than just time, Dylan!"'
+  - '"Following the map is the more reasonable choice here."'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 44080eb80999fb64b82e84c8710b8c02, type: 2}
   nextSequence: {fileID: 11400000, guid: f13183c1313c89143a7a44505e2d4a0e, type: 2}

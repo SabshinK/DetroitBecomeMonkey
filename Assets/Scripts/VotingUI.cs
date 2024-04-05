@@ -23,9 +23,16 @@ public class VotingUI : MonoBehaviour
     [SerializeField] private Animator[] selectionUnderlines;
 
     [Space]
+    [SerializeField] private Image decisionIcon;
+    [SerializeField] private Sprite unanimousIcon;
+    [SerializeField] private Sprite majorityIcon;
+
+    [Space]
     [SerializeField] private Animator timerBar;
 
     [SerializeField] private NarrativeHandler narrative;
+
+    
 
     private Dictionary<int, PlayerIcon> idsToIcons;
 
@@ -48,6 +55,8 @@ public class VotingUI : MonoBehaviour
             // Add icon to dictionary
             idsToIcons.Add(player.Key, iconScript);
         }
+
+        decisionIcon.enabled = false;
     }
 
     private void OnEnable()
@@ -87,7 +96,13 @@ public class VotingUI : MonoBehaviour
                 choiceTexts[i].text = decision.choices[i];
         }
 
-        aspectBottom.SetBool("IsPresenting", true);        
+        aspectBottom.SetBool("IsPresenting", true);
+
+        if (decision.decisionMode == DecisionMode.Unanimous)
+            decisionIcon.sprite = unanimousIcon;
+        else if (decision.decisionMode == DecisionMode.Majority)
+            decisionIcon.sprite = majorityIcon;
+        decisionIcon.enabled = true;
     }
 
     private void FinishChoice(Choice choice)
@@ -107,6 +122,8 @@ public class VotingUI : MonoBehaviour
         }
 
         aspectBottom.SetBool("IsPresenting", false);
+
+        decisionIcon.enabled = false;
     }
 
     private void SetSelectionUnderline(Choice choice)

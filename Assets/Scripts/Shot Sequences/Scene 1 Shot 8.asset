@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
-  - 'C: "It''s not your fault Dylan. We are in uncharated area here. We need to stay
-    focused on finding the students!"'
+  - 'Charles: "It''s not your fault, Dylan. We are in an uncharted area here."'
+  - '"We need to stay focused on finding the students!"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 71c92d07a875b48419810717f594992e, type: 2}
   nextSequence: {fileID: 11400000, guid: a02fdbb865a8a3e48af20b93543b7255, type: 2}

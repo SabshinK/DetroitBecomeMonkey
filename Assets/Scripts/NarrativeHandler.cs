@@ -16,11 +16,13 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     [SerializeField] private Image shot;
     [SerializeField] private TMP_Text dialogueBox;
 
+    [SerializeField] private GameObject instruction;
+
     //private Decision currentDecision;
 
     //private int currentSequence;
     private int dialogueIndex;
-    private bool shouldProgress;
+    private bool shouldProgress = false;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class NarrativeHandler : MonoBehaviour, INarrative
 
             prevAction.performed += PreviousLine;
             nextAction.performed += NextLine;
+            nextAction.performed += ClearInstructions;
         }
     }
 
@@ -53,12 +56,6 @@ public class NarrativeHandler : MonoBehaviour, INarrative
             prevAction.performed -= PreviousLine;
             nextAction.performed -= NextLine;
         }
-    }
-
-    private void Start()
-    {
-        SetShotSequence(currentSequence, 0);
-        shouldProgress = true;
     }
 
     public void NextLine(InputAction.CallbackContext context)
@@ -98,12 +95,15 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     // This function is pretty much unused unless we want it
     public void PreviousLine(InputAction.CallbackContext context)
     {
+        if (!shouldProgress)
+            return;
+
         if (dialogueIndex > 0)
         {
             dialogueIndex--;
             dialogueBox.text = currentSequence.dialogue[dialogueIndex];
         }
-        else
+        else if (currentSequence.previousSequence != null)
         {
             ShotSequence previousSequence = currentSequence.previousSequence;
             SetShotSequence(previousSequence, previousSequence.dialogue.Length - 1);
@@ -132,6 +132,20 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     private void ChooseBranch(Choice choice)
     {
         SetShotSequence(currentSequence.decision.consequences[(int)choice], 0);
+        shouldProgress = true;
+    }
+
+    private void ClearInstructions(InputAction.CallbackContext context)
+    {
+        instruction.SetActive(false);
+
+        foreach (PlayerInput playerInput in PlayerManager.Instance.idsToPlayers.Values)
+        {
+            InputAction nextAction = playerInput.actions.FindAction("Next");
+            nextAction.performed -= ClearInstructions;
+        }
+
+        SetShotSequence(currentSequence, 0);
         shouldProgress = true;
     }
 }

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - 'D: "But where?"'
+  - 'Dylan: "But where?"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: c8b375a6c4754674b97b4e5fd8170c7e, type: 2}
   nextSequence: {fileID: 11400000, guid: d6c04b10ce06e354e9860324f620d58d, type: 2}

@@ -24,5 +24,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 71a0ef00ce8fe204ab35fc8161631512, type: 2}
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: c54337b1da90d4843baa502c77ec9eec, type: 2}
   nextSequence: {fileID: 0}

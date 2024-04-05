@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e25685ae2d9bf6147ac90954444aa33e, type: 3}
   dialogue:
-  - '"I didn''t hear anything. It could be just some falling rocks. Anyway, we have
-    to get moving! "'
+  - 'Charles: "I didn''t hear anything. It could be just some falling rocks."'
+  - '"Anyway, we have to get moving!"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 65298a5bf26a8a146ab6e7dfac4ab0a2, type: 2}
   nextSequence: {fileID: 11400000, guid: 3d5ab3898e1cf2147af0853741c347fc, type: 2}

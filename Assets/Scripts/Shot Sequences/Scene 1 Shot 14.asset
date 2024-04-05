@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: cc54f7d565ca6d84c956207e234df0f5, type: 3}
   dialogue:
-  - 'Dylan: "Let''s go left here! Every second counts now. The students could be
-    hurt or worse!"'
+  - 'Dylan: "Let''s go left here! Every second counts now."'
+  - '"The students could be hurt or worse!"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 61dadbce142e4154086e62a74c070d97, type: 2}
   nextSequence: {fileID: 11400000, guid: 66984189a86cd3c4e9e97defaceca4dd, type: 2}

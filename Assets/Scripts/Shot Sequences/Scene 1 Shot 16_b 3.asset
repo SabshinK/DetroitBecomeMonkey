@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: a0645de2f1d6b88439cf357868945ad2, type: 3}
   dialogue:
-  - '"The echo that came from the tunnel! You didn''t hear that?"'
+  - 'Dylan: "The echo that came from the tunnel!"'
+  - '"You didn''t hear that?"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 08911171ce9da424a996e8a1693aca46, type: 2}
   nextSequence: {fileID: 11400000, guid: c54337b1da90d4843baa502c77ec9eec, type: 2}

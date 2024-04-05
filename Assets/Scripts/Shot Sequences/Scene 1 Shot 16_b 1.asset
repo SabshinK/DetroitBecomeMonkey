@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: cc54f7d565ca6d84c956207e234df0f5, type: 3}
   dialogue:
-  - Dylan:"Did you hear that, Charles?"
+  - 'Dylan: "Did you hear that, Charles?"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 064f1a5917ddde043a433e2e2ce113df, type: 2}
   nextSequence: {fileID: 11400000, guid: 08911171ce9da424a996e8a1693aca46, type: 2}
