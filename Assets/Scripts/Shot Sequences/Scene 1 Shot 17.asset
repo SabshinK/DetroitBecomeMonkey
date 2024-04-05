@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 53f2d7a130a3ccb458b73235c37b7a9b, type: 3}
   dialogue:
-  - Which way are we going?
+  - text: Which way are we going?
+    audio: {fileID: 0}
   decision:
     choices:
     - The Uncharted Tunnel

@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - 'Dylan: "I told them to have a lunch break."'
-  - '"I stepped away for few minutes! But when I returned, they were just gone!"'
+  - text: 'Dylan: "I told them to have a lunch break."'
+    audio: {fileID: 0}
+  - text: '"I stepped away for a few minutes! But when I returned, they were just
+      gone!"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

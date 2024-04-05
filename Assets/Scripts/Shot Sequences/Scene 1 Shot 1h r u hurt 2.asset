@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
-  - 'Charles: "That''s good to hear."'
-  - '"Where are the rest of the class that you were leading on while I prepped?"'
+  - text: 'Charles: "That''s good to hear."'
+    audio: {fileID: 0}
+  - text: '"Where are the rest of the class that you were leading on while I prepped?"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

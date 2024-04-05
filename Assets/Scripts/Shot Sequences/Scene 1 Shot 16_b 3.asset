@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: a0645de2f1d6b88439cf357868945ad2, type: 3}
   dialogue:
-  - 'Dylan: "The echo that came from the tunnel!"'
-  - '"You didn''t hear that?"'
+  - text: 'Dylan: "The echo that came from the tunnel!"'
+    audio: {fileID: 0}
+  - text: '"You didn''t hear that?"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

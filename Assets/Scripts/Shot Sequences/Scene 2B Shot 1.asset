@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 2f806be6adca272458010e969e8edeec, type: 3}
   dialogue:
-  - To be continued...
+  - text: "To be continued\u2026"
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

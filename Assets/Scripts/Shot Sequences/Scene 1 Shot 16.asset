@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: cc54f7d565ca6d84c956207e234df0f5, type: 3}
   dialogue:
-  - 'Dylan: "I understand Professor Lin, but time is not on our side." '
-  - '"A shortcut might be just what we need right now!!" '
+  - text: 'Dylan: "I understand Professor Lin, but time is not on our side." '
+    audio: {fileID: 0}
+  - text: '"A shortcut might be just what we need right now!!"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

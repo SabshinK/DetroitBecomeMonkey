@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - 'Dylan: "They were my responsibility..."'
-  - '"I was supposed to protect their safety at all times, but I..."'
+  - text: 'Dylan: "They were my responsibility..."'
+    audio: {fileID: 0}
+  - text: '"I was supposed to protect their safety at all times, but I..."'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

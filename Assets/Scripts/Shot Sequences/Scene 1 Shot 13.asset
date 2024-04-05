@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: d6d7ee03ebdb4d744a6ebe40ec63d176, type: 3}
   dialogue:
-  - 'Charles, cautiously exmaining the map, says: "Approaching left down this way
-    will get us to the end of the cave faster, but this tunnel is very much uncharted."'
-  - '"Approaching right will avoid many possible dangers ahead.."'
+  - text: 'Charles, cautiously examining the map, says: "Approaching left down this
+      way will get us to the end of the cave faster, but this tunnel is very much
+      uncharted."'
+    audio: {fileID: 0}
+  - text: '"Approaching right will avoid many possible dangers ahead.."'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

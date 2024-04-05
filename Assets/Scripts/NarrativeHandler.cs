@@ -18,6 +18,8 @@ public class NarrativeHandler : MonoBehaviour, INarrative
 
     [SerializeField] private GameObject instruction;
 
+    private AudioSource source;
+
     //private Decision currentDecision;
 
     //private int currentSequence;
@@ -27,6 +29,8 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     private void Awake()
     {
         dialogueIndex = 0;
+
+        source = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -82,7 +86,12 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         else
         {
             dialogueIndex++;
-            dialogueBox.text = currentSequence.dialogue[dialogueIndex];
+            dialogueBox.text = currentSequence.dialogue[dialogueIndex].text;
+            if (currentSequence.dialogue[dialogueIndex].audio != null)
+            {
+                source.clip = currentSequence.dialogue[dialogueIndex].audio;
+                source.Play();
+            }
 
             if (currentSequence.HasDecision)
             {
@@ -101,7 +110,12 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         if (dialogueIndex > 0)
         {
             dialogueIndex--;
-            dialogueBox.text = currentSequence.dialogue[dialogueIndex];
+            dialogueBox.text = currentSequence.dialogue[dialogueIndex].text;
+            if (currentSequence.dialogue[dialogueIndex].audio != null)
+            {
+                source.clip = currentSequence.dialogue[dialogueIndex].audio;
+                source.Play();
+            }
         }
         else if (currentSequence.previousSequence != null)
         {
@@ -118,7 +132,14 @@ public class NarrativeHandler : MonoBehaviour, INarrative
 
         shot.sprite = sequence.shot;
         if (sequence.dialogue.Length > 0)
-            dialogueBox.text = sequence.dialogue[newDialogueIndex];
+        {
+            dialogueBox.text = sequence.dialogue[newDialogueIndex].text;
+            if (currentSequence.dialogue[dialogueIndex].audio != null)
+            {
+                source.clip = sequence.dialogue[newDialogueIndex].audio;
+                source.Play();
+            }
+        }
         else
             dialogueBox.text = string.Empty;
 

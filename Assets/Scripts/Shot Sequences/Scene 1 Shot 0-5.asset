@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 0b1b5beda3d827049b2257017289e6e1, type: 3}
   dialogue:
-  - 'Screaming from afar: "Heyyy! Where did you guys gooo!!!???"'
+  - text: 'Screaming from afar: "Heyyy! Where did you guys go!!!???"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

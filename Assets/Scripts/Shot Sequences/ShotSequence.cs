@@ -8,7 +8,7 @@ using UnityEngine;
 public class ShotSequence : ScriptableObject
 {
     public Sprite shot;
-    public string[] dialogue;
+    public Line[] dialogue;
 
     public Decision decision;
 
@@ -34,5 +34,18 @@ public struct Decision
         this.decisionMode = decisionMode;
         this.consequences = consequences;
         this.isTimed = isTimed;
+    }
+}
+
+[Serializable]
+public struct Line
+{
+    public string text;
+    public AudioClip audio;
+
+    public Line(string text, AudioClip clip)
+    {
+        this.text = text;
+        audio = clip;
     }
 }

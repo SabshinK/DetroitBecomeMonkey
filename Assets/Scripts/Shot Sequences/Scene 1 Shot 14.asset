@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: cc54f7d565ca6d84c956207e234df0f5, type: 3}
   dialogue:
-  - 'Dylan: "Let''s go left here! Every second counts now."'
-  - '"The students could be hurt or worse!"'
+  - text: 'Dylan: "Let''s go left here! Every second counts now."'
+    audio: {fileID: 0}
+  - text: '"The students could be hurt or worse!"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

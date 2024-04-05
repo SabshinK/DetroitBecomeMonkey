@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 02b6b47511042094e927cb6531410b7c, type: 3}
   dialogue:
-  - 'Dylan: "Professor Lin!"'
+  - text: 'Dylan: "Professor Lin!"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

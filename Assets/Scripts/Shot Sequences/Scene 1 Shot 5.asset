@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - 'Dylan: "Yes, I deliberately told them to stay right here..."'
-  - '"I''ve been through every inch of this area I could access to find them, shouted
-    until my voice was hoarse."'
-  - '"It''s like they just vaporized!"'
+  - text: 'Dylan: "Yes, I deliberately told them to stay right here..."'
+    audio: {fileID: 0}
+  - text: '"I''ve been through every inch of this area I could access to find them,
+      shouted until my voice was hoarse."'
+    audio: {fileID: 0}
+  - text: '"It''s like they just vaporized!"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

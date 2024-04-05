@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e138325fc05fd394695577279c5b0af6, type: 3}
   dialogue:
-  - "Charles, with a determined nod toward the cave entrance: \"They must\u2019ve
-    ventured further into this cave somehow.\""
-  - '"It''s the only path they could''ve taken without crossing back past you. Let''s
-    go find them!"'
+  - text: "Charles, with a determined nod toward the cave entrance: \"They must\u2019ve
+      ventured further into this cave somehow.\""
+    audio: {fileID: 0}
+  - text: '"It''s the only path they could''ve taken without crossing back past you.
+      Let''s go find them!"'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: fbd4cf655bef96947b514696c35e5c30, type: 3}
   dialogue:
-  - 'Charles: "I also want to get to them as soon as possible, but if we get lost
-    or injured rushing in blind, it''s going to cost us more than just time, Dylan!"'
-  - '"Following the map is the more reasonable choice here."'
+  - text: 'Charles: "I also want to get to them as soon as possible, but if we get
+      lost or injured rushing in blind, it''s going to cost us more than just time,
+      Dylan!"'
+    audio: {fileID: 0}
+  - text: '"Following the map is the more reasonable choice here."'
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []

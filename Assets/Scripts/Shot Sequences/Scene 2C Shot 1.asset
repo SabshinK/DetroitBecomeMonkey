@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 8701c89096e0d4044b282677f6384623, type: 3}
   dialogue:
-  - LUFFY RETURNSSSSS
+  - text: LUFFY RETURNSSSSS
+    audio: {fileID: 0}
   decision:
     choices: []
     consequences: []
