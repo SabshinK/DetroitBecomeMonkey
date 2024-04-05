@@ -9,6 +9,9 @@ public class StartGame : MonoBehaviour, INarrative
 {
     public event INarrative.ChoiceEvent onPresentChoice;
 
+    [Tooltip("The number of desired players.")]
+    [SerializeField] private int playerTotal = 3;
+
     private List<PlayerVote> playerVotes;
 
     private int playersReady = 0;
@@ -64,7 +67,7 @@ public class StartGame : MonoBehaviour, INarrative
 
         Debug.Log(playersReady);
 
-        if (playersReady == PlayerManager.Instance.PlayerCount)
+        if (playersReady == playerTotal)
             StartCoroutine(NextScene(2f));
     }
 

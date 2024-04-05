@@ -62,6 +62,24 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=1.5)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous"",
+                    ""type"": ""Button"",
+                    ""id"": ""33d76a66-0d81-4794-9dc7-73392ce44b0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb0c1b41-719b-4d57-88f3-e6de3cb9e289"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +258,72 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Vote D"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c292413b-e36e-4973-be59-2181f54166c1"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""daaf0710-1d25-4a3b-98e8-05529d4a94cc"",
+                    ""path"": ""<HID::Logitech Logitech RumblePad 2 USB>/button7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51154cc8-11a1-4e2e-a7bc-7e19682ff859"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4b7ff95-78f0-4fb8-bf5e-efc09fc289ca"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""930e2a36-c984-46d7-8962-938e362bbee4"",
+                    ""path"": ""<HID::Logitech Logitech RumblePad 2 USB>/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4f3252f-8b4b-45b9-aa77-0eed71a723c3"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +336,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Player_VoteB = m_Player.FindAction("Vote B", throwIfNotFound: true);
         m_Player_VoteC = m_Player.FindAction("Vote C", throwIfNotFound: true);
         m_Player_VoteD = m_Player.FindAction("Vote D", throwIfNotFound: true);
+        m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
+        m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +403,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_VoteB;
     private readonly InputAction m_Player_VoteC;
     private readonly InputAction m_Player_VoteD;
+    private readonly InputAction m_Player_Previous;
+    private readonly InputAction m_Player_Next;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -325,6 +413,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @VoteB => m_Wrapper.m_Player_VoteB;
         public InputAction @VoteC => m_Wrapper.m_Player_VoteC;
         public InputAction @VoteD => m_Wrapper.m_Player_VoteD;
+        public InputAction @Previous => m_Wrapper.m_Player_Previous;
+        public InputAction @Next => m_Wrapper.m_Player_Next;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -346,6 +436,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @VoteD.started += instance.OnVoteD;
             @VoteD.performed += instance.OnVoteD;
             @VoteD.canceled += instance.OnVoteD;
+            @Previous.started += instance.OnPrevious;
+            @Previous.performed += instance.OnPrevious;
+            @Previous.canceled += instance.OnPrevious;
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -362,6 +458,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @VoteD.started -= instance.OnVoteD;
             @VoteD.performed -= instance.OnVoteD;
             @VoteD.canceled -= instance.OnVoteD;
+            @Previous.started -= instance.OnPrevious;
+            @Previous.performed -= instance.OnPrevious;
+            @Previous.canceled -= instance.OnPrevious;
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -385,5 +487,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnVoteB(InputAction.CallbackContext context);
         void OnVoteC(InputAction.CallbackContext context);
         void OnVoteD(InputAction.CallbackContext context);
+        void OnPrevious(InputAction.CallbackContext context);
+        void OnNext(InputAction.CallbackContext context);
     }
 }
