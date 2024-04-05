@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
-  - That's good to hear. Where are the rest of the class that you were leading on
-    while I preped?
+  - 'Charles: "That''s good to hear."'
+  - '"Where are the rest of the class that you were leading on while I prepped?"'
   decision:
     choices: []
     consequences: []
     decisionMode: 1
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 1c2a1bc556814e94ab7fd6274b26a5f2, type: 2}
   nextSequence: {fileID: 11400000, guid: 0ae183fb273f79744805a841c71c5ecb, type: 2}

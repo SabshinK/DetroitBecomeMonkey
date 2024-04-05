@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - I was leading them on the expedition while you were preping at the van. I told
-    them to have a lunch break. I steped away for few minutes! But when I returned,
-    they were just gone!
+  - 'Dylan: "I told them to have a lunch break."'
+  - '"I stepped away for few minutes! But when I returned, they were just gone!"'
   decision:
     choices: []
     consequences: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 5d72e64e07940bf4f9defbb9d1298fae, type: 3}
   dialogue:
-  - 'Dylan: "Yes, they were right behind me! I only turned away for a 3 minutes to
-    make an important phone call."'
+  - 'Dylan: "Yes, they were right behind me!"'
+  - '"I only turned away for a 3 minutes to make an important phone call."'
   decision:
     choices: []
     consequences: []

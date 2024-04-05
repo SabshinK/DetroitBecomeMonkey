@@ -20,5 +20,5 @@ MonoBehaviour:
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 6c51e3ba2f0b3a042b01df7f0c3ad40a, type: 2}
   nextSequence: {fileID: 11400000, guid: b72ce24e3cacba44e968f7bd586e28a9, type: 2}

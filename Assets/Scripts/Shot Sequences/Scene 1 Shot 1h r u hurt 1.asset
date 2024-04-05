@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 02b6b47511042094e927cb6531410b7c, type: 3}
   dialogue:
-  - I am okay Professor Lin.
+  - 'Dylan: "I''m okay, Professor Lin."'
   decision:
     choices: []
     consequences: []
     decisionMode: 1
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: c6618ec6da6715e4c931f01963837d3c, type: 2}
   nextSequence: {fileID: 11400000, guid: 2ba1ba249efa99d49b030c46c9b8ffb6, type: 2}

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 02b6b47511042094e927cb6531410b7c, type: 3}
   dialogue:
-  - Dylan:"The students... I lost the students..."
+  - 'Dylan: "The students... I lost the students..."'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 99c8c13d630e14d408851bbc11b108f3, type: 2}
   nextSequence: {fileID: 11400000, guid: 1528855bae3109340bec2c8fb2e28abe, type: 2}

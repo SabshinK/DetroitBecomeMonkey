@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
-  - '"What?"'
+  - 'Charles: "What?"'
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 7e6dff3c68334a54b9efe5c908b10703, type: 2}
   nextSequence: {fileID: 11400000, guid: 75d0bebd01bebe744bf3c2b37dd88a37, type: 2}

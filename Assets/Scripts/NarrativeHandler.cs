@@ -67,7 +67,6 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         if (!shouldProgress)
             return;
 
-        Debug.Log(dialogueIndex);
         // If this is the last dialogue, do stuff
         if (dialogueIndex >= currentSequence.dialogue.Length - 1)
         {
@@ -122,6 +121,12 @@ public class NarrativeHandler : MonoBehaviour, INarrative
             dialogueBox.text = sequence.dialogue[newDialogueIndex];
         else
             dialogueBox.text = string.Empty;
+
+        if (currentSequence.HasDecision && currentSequence.dialogue.Length <= 1)
+        {
+            onPresentChoice?.Invoke(currentSequence.decision);
+            shouldProgress = false;
+        }
     }
     
     private void ChooseBranch(Choice choice)
