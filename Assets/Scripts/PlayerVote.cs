@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class PlayerVote : MonoBehaviour
 {
@@ -18,8 +19,11 @@ public class PlayerVote : MonoBehaviour
     private InputAction[] voteActions;
 
     private Choice choiceCode;
+    private int totalChoices;
 
     private bool didCast;
+
+    #region Unity Callbacks
 
     private void Awake()
     {
@@ -60,15 +64,9 @@ public class PlayerVote : MonoBehaviour
         //SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    Testing test = FindObjectOfType<Testing>();
-    //    if (test != null)
-    //        test.onPresentChoice.AddListener(() => { 
-    //            LastChoice = Choice.Default;
-    //            choiceCode = Choice.Default;
-    //        });
-    //}
+    #endregion
+
+    #region Input Callbacks
 
     private void StartCastVote(InputAction.CallbackContext context)
     {
@@ -76,6 +74,11 @@ public class PlayerVote : MonoBehaviour
         {
             // Only call this function when there is a new vote
             Choice potentialChoice = ActionToEnum(context.action);
+
+            // Case where the button pressed isn't an available choice, in which case do nothing
+            if ((int)potentialChoice >= totalChoices && totalChoices > 0)
+                return;
+
             LastChoice = choiceCode;
             if (potentialChoice != LastChoice)
             {
@@ -89,7 +92,11 @@ public class PlayerVote : MonoBehaviour
     {
         if (VotingManager.Instance.ShouldVote)
         {
+            // Don't cast if the choice is invalid
             Choice code = ActionToEnum(context.action);
+            if ((int)code >= totalChoices && totalChoices > 0)
+                return;
+
             if (choiceCode == code)
             {
                 didCast = true;
@@ -110,6 +117,8 @@ public class PlayerVote : MonoBehaviour
         }
     }
 
+    #endregion
+
     private Choice ActionToEnum(InputAction action)
     {
         // Cast the index as a vote choice if the action matches
@@ -123,10 +132,12 @@ public class PlayerVote : MonoBehaviour
         return Choice.Default;
     }
 
-    public void ResetVote()
+    public void ResetVoting(int totalChoices)
     {
         LastChoice = Choice.Default;
         choiceCode = Choice.Default;
+
+        this.totalChoices = totalChoices;
     }
 }
 

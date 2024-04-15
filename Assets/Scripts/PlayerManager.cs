@@ -50,6 +50,6 @@ public class PlayerManager : MonoBehaviour
         playerVote.PlayerId = transform.childCount;
         VotingManager.Instance.RegisterPlayer(transform.childCount, playerVote);
 
-        Debug.Log(transform.childCount);
+        //Debug.Log(transform.childCount);
     }
 }

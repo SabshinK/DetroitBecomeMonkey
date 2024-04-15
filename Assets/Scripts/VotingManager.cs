@@ -30,6 +30,8 @@ public class VotingManager : MonoBehaviour
 
     //private KeyValuePair<Choice, int> highestVote;
 
+    #region Unity Callbacks
+
     private void Awake()
     {
         // Singleton logic
@@ -96,6 +98,8 @@ public class VotingManager : MonoBehaviour
             narratives[0].onPresentChoice += InitializeDecision;
     }
 
+    #endregion
+
     public void RegisterPlayer(int playerId, PlayerVote playerVote)
     {
         idsToPlayerVotes.Add(playerId, playerVote);
@@ -104,6 +108,8 @@ public class VotingManager : MonoBehaviour
         playerVote.onFinishCastVote += SubmitVote;
         playerVote.onCancelCastVote += CancelVote;
     }
+
+    #region Voting Callbacks
 
     // These two functions are just getting what the current voting status is like, players have to all hold buttons to submit
     private void RecordVote(int playerId, Choice choice)
@@ -114,17 +120,40 @@ public class VotingManager : MonoBehaviour
 
         choiceTallies[choice]++;
 
-        // Discard the last vote of that player
         PlayerVote playerVote = idsToPlayerVotes[playerId];
-        if (choiceTallies.ContainsKey(playerVote.LastChoice))
+        if (choiceTallies.ContainsKey(playerVote.LastChoice)) 
             choiceTallies[playerVote.LastChoice]--;
 
         // Check to see what is currently highest voted
         CheckVote();
     }
 
+    // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
+    private void SubmitVote(int playerId, Choice choice)
+    {
+        playersReady++;
+
+        if (playersReady == PlayerManager.Instance.PlayerCount)
+        {
+            StopAllCoroutines();
+            onCastFinalVote?.Invoke(FinalVote);
+        }
+    }
+
+    private void CancelVote(int playerId, Choice choice)
+    {
+        playersReady = playersReady > 0 ? playersReady - 1 : 0;
+    }
+
+    #endregion
+
     private void CheckVote()
     {
+        foreach (KeyValuePair<Choice, int> choice in choiceTallies)
+        {
+            Debug.Log($"Choice {choice.Key}: {choice.Value}");
+        }
+
         if (currentDecision.decisionMode == DecisionMode.Majority)
         {
             // Find the current highest vote, also have a boolean to check and make sure the values aren't all the same
@@ -166,24 +195,7 @@ public class VotingManager : MonoBehaviour
         }
 
         onUpdateFinalVote?.Invoke(FinalVote);
-    }
-
-    // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
-    private void SubmitVote(int playerId, Choice choice)
-    {
-        playersReady++;
-
-        if (playersReady == PlayerManager.Instance.PlayerCount)
-        {
-            StopAllCoroutines();
-            onCastFinalVote?.Invoke(FinalVote);
-        }
-    }
-
-    private void CancelVote(int playerId, Choice choice)
-    {
-        playersReady = playersReady > 0 ? playersReady - 1 : 0;
-    }
+    }    
 
     private void InitializeDecision(Decision decision)
     {
@@ -204,10 +216,10 @@ public class VotingManager : MonoBehaviour
             for (int i = 0; i < decision.choices.Length; i++)
                 choiceTallies.Add((Choice)i, 0);
         }
-        
+
         // Reset all the playerVotes
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
-            playerVote.ResetVote();
+            playerVote.ResetVoting(decision.choices == null ? 0 : decision.choices.Length);
 
         // Time to vote!
         ShouldVote = true;
@@ -219,6 +231,23 @@ public class VotingManager : MonoBehaviour
 
         // Cast the final vote regardless of whether players are ready
         onCastFinalVote?.Invoke(FinalVote);
+    }
+
+    private IEnumerator FocusGroup()
+    {
+        for (int i = 0; i < PlayerManager.Instance.PlayerCount; i++)
+        {
+            // ui stuff setup - set player
+
+            // subbing to functions?
+
+            // wait for players to discuss and make a decision
+
+            // unsub            
+        }
+
+        // ui teardown
+        yield return new WaitForEndOfFrame();
     }
 }
 

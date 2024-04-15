@@ -27,13 +27,15 @@ public struct Decision
     [Space]
     public DecisionMode decisionMode;
     public bool isTimed;
+    public bool useFocusGroup;
 
-    public Decision(DecisionMode decisionMode, bool isTimed, ShotSequence[] consequences, string[] choices)
+    public Decision(DecisionMode decisionMode, bool isTimed, bool useFocusGroup, ShotSequence[] consequences, string[] choices)
     {
         this.choices = choices;
         this.decisionMode = decisionMode;
         this.consequences = consequences;
         this.isTimed = isTimed;
+        this.useFocusGroup = useFocusGroup;
     }
 }
 

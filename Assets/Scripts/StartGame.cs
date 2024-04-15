@@ -9,9 +9,6 @@ public class StartGame : MonoBehaviour, INarrative
 {
     public event INarrative.ChoiceEvent onPresentChoice;
 
-    [Tooltip("The number of desired players.")]
-    [SerializeField] private int playerTotal = 3;
-
     private List<PlayerVote> playerVotes;
 
     private int playersReady = 0;
@@ -47,7 +44,7 @@ public class StartGame : MonoBehaviour, INarrative
     // Start is called after SceneManager.sceneLoaded
     private void Start()
     {
-        onPresentChoice?.Invoke(new Decision(DecisionMode.Calibration, false, new ShotSequence[0], new string[0]));
+        onPresentChoice?.Invoke(new Decision(DecisionMode.Calibration, false, false, new ShotSequence[0], new string[0]));
     }
 
     private void RegisterPlayer(PlayerInput playerInput)
@@ -67,7 +64,7 @@ public class StartGame : MonoBehaviour, INarrative
 
         Debug.Log(playersReady);
 
-        if (playersReady == playerTotal)
+        if (playersReady == PlayerManager.Instance.PlayerCount)
             StartCoroutine(NextScene(2f));
     }
 
