@@ -30,6 +30,10 @@ public class VotingUI : MonoBehaviour
     [Space]
     [SerializeField] private Animator timerBar;
 
+    [Space]
+    [SerializeField] private GameObject focusGroupNoteObject;
+    [SerializeField] private GameObject[] focusGroupIcons;
+
     [SerializeField] private NarrativeHandler narrative;
 
     
@@ -37,6 +41,8 @@ public class VotingUI : MonoBehaviour
     private Dictionary<int, PlayerIcon> idsToIcons;
 
     private Coroutine currentRoutine;
+
+    private Decision currentDecision;
 
     private void Awake()
     {
@@ -63,6 +69,7 @@ public class VotingUI : MonoBehaviour
     {
         VotingManager.Instance.onUpdateFinalVote += SetSelectionUnderline;
         VotingManager.Instance.onCastFinalVote += FinishChoice;
+        VotingManager.Instance.onNextPlayer += NextPlayerIcon;
 
         foreach (PlayerVote playerVote in VotingManager.Instance.idsToPlayerVotes.Values)
         {
@@ -76,6 +83,7 @@ public class VotingUI : MonoBehaviour
     {
         VotingManager.Instance.onUpdateFinalVote -= SetSelectionUnderline;
         VotingManager.Instance.onCastFinalVote -= FinishChoice;
+        VotingManager.Instance.onNextPlayer -= NextPlayerIcon;
 
         foreach (PlayerVote playerVote in VotingManager.Instance.idsToPlayerVotes.Values)
         {
@@ -87,6 +95,8 @@ public class VotingUI : MonoBehaviour
 
     public void PresentChoice(Decision decision)
     {
+        currentDecision = decision;
+
         // Enable the icon areas
         for (int i = 0; i < choiceObjects.Length; i++)
         {
@@ -103,6 +113,12 @@ public class VotingUI : MonoBehaviour
         else if (decision.decisionMode == DecisionMode.Majority)
             decisionIcon.sprite = majorityIcon;
         decisionIcon.enabled = true;
+
+        if (decision.useFocusGroup)
+        {
+            focusGroupNoteObject.SetActive(true);
+            focusGroupIcons[0].SetActive(true);
+        }
     }
 
     private void FinishChoice(Choice choice)
@@ -124,6 +140,12 @@ public class VotingUI : MonoBehaviour
         aspectBottom.SetBool("IsPresenting", false);
 
         decisionIcon.enabled = false;
+
+        if (currentDecision.useFocusGroup)
+        {
+            focusGroupNoteObject.SetActive(false);
+            focusGroupIcons[focusGroupIcons.Length - 1].SetActive(false);
+        }
     }
 
     private void SetSelectionUnderline(Choice choice)
@@ -139,9 +161,29 @@ public class VotingUI : MonoBehaviour
 
     private void SetPlayerIconLocation(int playerId, Choice choice)
     {
+        if (currentDecision.useFocusGroup && playerId != VotingManager.Instance.CurrentPlayer)
+            return;
+
         // I need to access the player icon of the given id and move it under the correct icon area
         Transform iconAreaParent = iconAreas[(int)choice].transform.GetChild(0);
         if (iconAreaParent.gameObject.activeInHierarchy)
             idsToIcons[playerId].transform.SetParent(iconAreaParent);
+    }
+
+    private void NextPlayerIcon(int previousPlayer)
+    {
+        // Basically finish choice logic but the choice isn't actually done
+        PlayerIcon icon = idsToIcons[previousPlayer];
+        icon.transform.SetParent(iconParent);
+        icon.transform.position = new Vector3(0, -650, 0);
+
+        foreach (Animator selectionUnderline in selectionUnderlines)
+        {
+            if (selectionUnderline.gameObject.activeInHierarchy)
+                selectionUnderline.SetBool("IsSelected", false);
+        }
+
+        focusGroupIcons[previousPlayer - 1].SetActive(false);
+        focusGroupIcons[previousPlayer].SetActive(true);
     }
 }

@@ -12,23 +12,30 @@ public class VotingManager : MonoBehaviour
     public readonly Dictionary<int, PlayerVote> idsToPlayerVotes = new Dictionary<int, PlayerVote>();
 
     public delegate void FinalVoteEvent(Choice choice);
+    public delegate void FocusGroupEvent(int previousPlayer);
 
     public event FinalVoteEvent onUpdateFinalVote;
     public event FinalVoteEvent onCastFinalVote;
+    public event FocusGroupEvent onNextPlayer;
 
-    public bool ShouldVote { get; private set; }
+    public bool ShouldVote { get; private set; }    
+    public int CurrentPlayer { get; private set; }
     
     [SerializeField] private INarrative narrative;
 
     [SerializeField] private float voteTime = 10f;
     
+    // General globals -------------------------------------------------------------------------------------------------------
+
     private Dictionary<Choice, int> choiceTallies;
     private Choice FinalVote;
     private int playersReady = 0;
 
     private Decision currentDecision;
 
-    //private KeyValuePair<Choice, int> highestVote;
+    // Globals for focus group method ----------------------------------------------------------------------------------------
+
+    
 
     #region Unity Callbacks
 
@@ -98,7 +105,9 @@ public class VotingManager : MonoBehaviour
             narratives[0].onPresentChoice += InitializeDecision;
     }
 
-    #endregion
+    #endregion    
+
+    #region Voting Callbacks
 
     public void RegisterPlayer(int playerId, PlayerVote playerVote)
     {
@@ -109,11 +118,13 @@ public class VotingManager : MonoBehaviour
         playerVote.onCancelCastVote += CancelVote;
     }
 
-    #region Voting Callbacks
-
     // These two functions are just getting what the current voting status is like, players have to all hold buttons to submit
     private void RecordVote(int playerId, Choice choice)
     {
+        // Check the method of decision making, focus group method runs the same logic if the correct player is voting
+        if (currentDecision.useFocusGroup && playerId != CurrentPlayer)
+            return;
+
         // We don't care about the choice if it's not in the dictionary
         if (!choiceTallies.ContainsKey(choice))
             return;
@@ -121,31 +132,66 @@ public class VotingManager : MonoBehaviour
         choiceTallies[choice]++;
 
         PlayerVote playerVote = idsToPlayerVotes[playerId];
-        if (choiceTallies.ContainsKey(playerVote.LastChoice)) 
+        if (choiceTallies.ContainsKey(playerVote.LastChoice))
             choiceTallies[playerVote.LastChoice]--;
 
-        // Check to see what is currently highest voted
-        CheckVote();
+        if (!currentDecision.useFocusGroup)
+        {
+            CheckVote();
+            onUpdateFinalVote?.Invoke(FinalVote);   // Check to see what is currently highest voted
+        }
+        else
+            onUpdateFinalVote?.Invoke(choice);  // Update UI but don't check final vote yet
+
+        foreach (KeyValuePair<Choice, int> pair in choiceTallies)
+        {
+            Debug.Log($"Choice {pair.Key}: {pair.Value}");
+        }
+        Debug.Log(CurrentPlayer);
     }
 
     // For these two methods we don't care what player voted or what they chose, just that they are holding and ready
     private void SubmitVote(int playerId, Choice choice)
     {
-        playersReady++;
-
-        if (playersReady == PlayerManager.Instance.PlayerCount)
+        if (currentDecision.useFocusGroup)
         {
-            StopAllCoroutines();
-            onCastFinalVote?.Invoke(FinalVote);
+            if (CurrentPlayer >= PlayerManager.Instance.PlayerCount)
+            {
+                // Final focus group logic
+                CheckVote();
+                onCastFinalVote?.Invoke(FinalVote);
+            }
+            else if (playerId == CurrentPlayer)
+            {
+                // Move the coroutine along
+                onNextPlayer?.Invoke(CurrentPlayer);
+                CurrentPlayer++;
+                idsToPlayerVotes[CurrentPlayer].ResetVoting(currentDecision.choices == null ? 0 : currentDecision.choices.Length);
+            }
+        }
+        else
+        {
+            // Tally players
+            playersReady++;
+
+            if (playersReady == PlayerManager.Instance.PlayerCount)
+            {
+                StopAllCoroutines();
+                onCastFinalVote?.Invoke(FinalVote);
+            }
         }
     }
 
     private void CancelVote(int playerId, Choice choice)
     {
-        playersReady = playersReady > 0 ? playersReady - 1 : 0;
+        // Unused during focus group method, once player submits that's it
+        if (!currentDecision.useFocusGroup)
+            playersReady = playersReady > 0 ? playersReady - 1 : 0;
     }
 
     #endregion
+
+    #region Custom Methods
 
     private void CheckVote()
     {
@@ -193,9 +239,7 @@ public class VotingManager : MonoBehaviour
         {
             // Not implemented
         }
-
-        onUpdateFinalVote?.Invoke(FinalVote);
-    }    
+    }
 
     private void InitializeDecision(Decision decision)
     {
@@ -221,6 +265,10 @@ public class VotingManager : MonoBehaviour
         foreach (PlayerVote playerVote in idsToPlayerVotes.Values)
             playerVote.ResetVoting(decision.choices == null ? 0 : decision.choices.Length);
 
+        // Set the current player index if this is a focus group method decision
+        if (decision.useFocusGroup)
+            CurrentPlayer = 1;
+
         // Time to vote!
         ShouldVote = true;
     }
@@ -233,22 +281,23 @@ public class VotingManager : MonoBehaviour
         onCastFinalVote?.Invoke(FinalVote);
     }
 
-    private IEnumerator FocusGroup()
-    {
-        for (int i = 0; i < PlayerManager.Instance.PlayerCount; i++)
-        {
-            // ui stuff setup - set player
+    //private IEnumerator FocusGroup()
+    //{
+    //    for (int i = 0; i < PlayerManager.Instance.PlayerCount; i++)
+    //    {
+    //        currentPlayer = i + 1;
+    //        playerFinished = false;
 
-            // subbing to functions?
+    //        // wait for players to discuss and make a decision
+    //        yield return new WaitUntil(() => playerFinished);
+    //    }
 
-            // wait for players to discuss and make a decision
+    //    // submit votes
+    //    CheckVote();
+    //    onCastFinalVote?.Invoke(FinalVote);
+    //}
 
-            // unsub            
-        }
-
-        // ui teardown
-        yield return new WaitForEndOfFrame();
-    }
+    #endregion
 }
 
 public enum DecisionMode

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: e78bb7d5e1030374c8d2ed1f160899ba, type: 3}
   dialogue:
-  - 
+  - text: 
+    audio: {fileID: 0}
   decision:
     choices:
     - Are you hurt, Dylan?
@@ -24,5 +25,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 937b96770944ed74eb7e61c70df737bf, type: 2}
     decisionMode: 1
     isTimed: 0
+    useFocusGroup: 1
   previousSequence: {fileID: 0}
   nextSequence: {fileID: 11400000, guid: 3f46be4172b0c264ebd6a97aed8456d6, type: 2}
