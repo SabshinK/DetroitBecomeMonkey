@@ -22,5 +22,6 @@ MonoBehaviour:
     consequences: []
     decisionMode: 0
     isTimed: 0
-  previousSequence: {fileID: 11400000, guid: 43eb7b422c4444345b024fbf59b6a11c, type: 2}
+    useFocusGroup: 0
+  previousSequence: {fileID: 0}
   nextSequence: {fileID: 11400000, guid: 61dadbce142e4154086e62a74c070d97, type: 2}

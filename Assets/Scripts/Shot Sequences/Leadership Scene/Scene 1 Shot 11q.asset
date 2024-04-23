@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11q
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 57258c1f9b125c94f87d0a239eecc91a, type: 3}
+  shot: {fileID: 21300000, guid: 8a24c2aa5a3e08d4b9470bbbe5f78a3e, type: 3}
   dialogue:
   - text: "Dylan: \u201CFix the fence, of course!\u201D"
     audio: {fileID: 0}

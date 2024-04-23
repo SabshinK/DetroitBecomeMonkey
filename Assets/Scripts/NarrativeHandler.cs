@@ -68,6 +68,8 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         if (!shouldProgress)
             return;
 
+        source.Stop();
+
         // If this is the last dialogue, do stuff
         if (dialogueIndex >= currentSequence.dialogue.Length - 1)
         {
@@ -87,8 +89,11 @@ public class NarrativeHandler : MonoBehaviour, INarrative
         {
             dialogueIndex++;
             dialogueBox.text = currentSequence.dialogue[dialogueIndex].text;
+            
+            // Audio stuff
             if (currentSequence.dialogue[dialogueIndex].audio != null)
             {
+                
                 source.clip = currentSequence.dialogue[dialogueIndex].audio;
                 source.Play();
             }
@@ -106,6 +111,8 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     {
         if (!shouldProgress)
             return;
+
+        source.Stop();
 
         if (dialogueIndex > 0)
         {
@@ -152,6 +159,7 @@ public class NarrativeHandler : MonoBehaviour, INarrative
     
     private void ChooseBranch(Choice choice)
     {
+        Debug.Log(choice);
         SetShotSequence(currentSequence.decision.consequences[(int)choice], 0);
         shouldProgress = true;
     }
