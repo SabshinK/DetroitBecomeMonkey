@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
-  m_Name: Scene 1 Shot 11 sac 3
+  m_Name: Scene 1 Shot 11 res 2
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 57258c1f9b125c94f87d0a239eecc91a, type: 3}
   dialogue:
-  - text: Charles stops for a moment and looks down for a second. His face looks
-      a little paler than before.
+  - text: "Charles: \u201CResilience is important.\u201D"
+    audio: {fileID: 0}
+  - text: "\u201CPeople look up to those that don\u2019t give up, and sometimes perseverance
+      in the face of adversity is just what they need.\u201D"
+    audio: {fileID: 0}
+  - text: "\u201CPersistence is two faced though.\u201D"
     audio: {fileID: 0}
   decision:
     choices: []
@@ -23,5 +27,5 @@ MonoBehaviour:
     decisionMode: 0
     isTimed: 0
     useFocusGroup: 0
-  previousSequence: {fileID: 11400000, guid: 09c807427f05b354d926f20b1cfec72a, type: 2}
-  nextSequence: {fileID: 11400000, guid: 8cf5cf46f3844e94e8fc60ff2a1b5795, type: 2}
+  previousSequence: {fileID: 11400000, guid: 9a17172921f24c9448cd49197fced51e, type: 2}
+  nextSequence: {fileID: 11400000, guid: 6c30ef4b7cf5ea04c9fdba6997141735, type: 2}
