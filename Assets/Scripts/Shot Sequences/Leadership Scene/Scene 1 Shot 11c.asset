@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11c
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 57258c1f9b125c94f87d0a239eecc91a, type: 3}
+  shot: {fileID: 21300000, guid: 7d010b8a73e798d43bc8aedef1b4e979, type: 3}
   dialogue:
   - text: "Charles: \u201CThe path here is tight, let me go first\u201D"
     audio: {fileID: 0}

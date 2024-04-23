@@ -25,8 +25,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3ebc7e71148ca9d4ba1f09e5d699b6f9, type: 2}
     - {fileID: 11400000, guid: 9a17172921f24c9448cd49197fced51e, type: 2}
     - {fileID: 11400000, guid: 370099c5b063d5a45b7a60873b51dcf4, type: 2}
-    decisionMode: 0
+    decisionMode: 1
     isTimed: 0
-    useFocusGroup: 0
+    useFocusGroup: 1
   previousSequence: {fileID: 0}
   nextSequence: {fileID: 0}

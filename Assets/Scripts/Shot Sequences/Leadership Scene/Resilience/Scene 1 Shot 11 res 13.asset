@@ -26,4 +26,4 @@ MonoBehaviour:
     isTimed: 0
     useFocusGroup: 0
   previousSequence: {fileID: 11400000, guid: 35eb2cbb8a4991b4186b8dde35806a25, type: 2}
-  nextSequence: {fileID: 0}
+  nextSequence: {fileID: 11400000, guid: 0c41d356beca39f40bfd318f03743e71, type: 2}

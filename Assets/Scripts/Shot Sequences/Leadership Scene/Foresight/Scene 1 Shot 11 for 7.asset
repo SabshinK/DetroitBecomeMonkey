@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: 57258c1f9b125c94f87d0a239eecc91a, type: 3}
   dialogue:
-  - text: "Dylan: \u201CI guess\u2026 the ability to think ahead and plan for the
-      future, whatever that might be.\u201D"
+  - text: "Dylan: \u201CWhat if the past isn\u2019t helpful?\u201D"
+    audio: {fileID: 0}
+  - text: "\u201CWhat if we\u2019re encountering something we\u2019ve never seen
+      before?\u201D"
     audio: {fileID: 0}
   decision:
     choices: []
@@ -23,5 +25,5 @@ MonoBehaviour:
     decisionMode: 0
     isTimed: 0
     useFocusGroup: 0
-  previousSequence: {fileID: 0}
-  nextSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 64058ea5d9ab41b41a916365d62b059c, type: 2}
+  nextSequence: {fileID: 11400000, guid: 4b73c3ec5cf311a46b0d1e184c573efe, type: 2}
