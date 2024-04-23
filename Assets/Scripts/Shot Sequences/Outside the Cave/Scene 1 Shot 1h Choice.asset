@@ -23,8 +23,8 @@ MonoBehaviour:
     consequences:
     - {fileID: 11400000, guid: c6618ec6da6715e4c931f01963837d3c, type: 2}
     - {fileID: 11400000, guid: 937b96770944ed74eb7e61c70df737bf, type: 2}
-    decisionMode: 1
+    decisionMode: 0
     isTimed: 0
-    useFocusGroup: 1
+    useFocusGroup: 0
   previousSequence: {fileID: 0}
   nextSequence: {fileID: 11400000, guid: 3f46be4172b0c264ebd6a97aed8456d6, type: 2}

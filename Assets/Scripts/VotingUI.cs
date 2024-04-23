@@ -23,11 +23,19 @@ public class VotingUI : MonoBehaviour
     [SerializeField] private Animator[] selectionUnderlines;
 
     [Space]
+    [Header("Decision Method Objects")]
     [SerializeField] private GameObject decisionIconObj;
     [SerializeField] private TMP_Text decisionText;
     [SerializeField] private Image decisionIcon;
     [SerializeField] private Sprite unanimousIcon;
     [SerializeField] private Sprite majorityIcon;
+
+    [Space]
+    [SerializeField] private GameObject methodIconObj;
+    [SerializeField] private TMP_Text methodText;
+    [SerializeField] private Image methodIcon;
+    [SerializeField] private Sprite votingIcon;
+    [SerializeField] private Sprite focusIcon;
 
     [Space]
     [SerializeField] private Animator timerBar;
@@ -65,6 +73,7 @@ public class VotingUI : MonoBehaviour
         }
 
         decisionIconObj.SetActive(false);
+        methodIconObj.SetActive(false);
     }
 
     private void OnEnable()
@@ -123,7 +132,15 @@ public class VotingUI : MonoBehaviour
         {
             focusGroupNoteObject.SetActive(true);
             focusGroupIcons[0].SetActive(true);
+            methodText.text = "Focus Group";
+            methodIcon.sprite = focusIcon;
         }
+        else
+        {
+            methodText.text = "Voting";
+            methodIcon.sprite = votingIcon;
+        }
+        methodIconObj.SetActive(true);
     }
 
     private void FinishChoice(Choice choice)
@@ -145,6 +162,7 @@ public class VotingUI : MonoBehaviour
         aspectBottom.SetBool("IsPresenting", false);
 
         decisionIconObj.SetActive(false);
+        methodIconObj.SetActive(false);
 
         if (currentDecision.useFocusGroup)
         {
