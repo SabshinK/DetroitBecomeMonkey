@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Charles: \u201CYou know, there\u2019s an old saying in Chinese: w\xE1ng
       y\xE1ng b\u01D4 l\xE1o, w\xE9i sh\xCD w\xE8i w\u0103n.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5ff4b4695276aff49a80c0df7e26cfc3, type: 3}
   decision:
     choices: []
     consequences: []

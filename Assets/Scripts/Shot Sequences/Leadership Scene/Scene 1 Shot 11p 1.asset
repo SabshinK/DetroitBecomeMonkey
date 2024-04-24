@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: fbd53ff527391fc4d8e59b531da975ca, type: 3}
   dialogue:
-  - text: "\u201COne night, after a hard storm, the farmer noticed his pen was broken.\""
-    audio: {fileID: 0}
+  - text: "\u201COne night, after a hard storm, the farmer noticed a fence was broken.\""
+    audio: {fileID: 8300000, guid: b69865ae27501eb45aa7ce43e488b650, type: 3}
   - text: '"He put off fixing it until the next day, but he found that one of his
       sheep was stolen in the middle of the night by a wolf."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 936bfa7c02aed3f4a8b023ad77a03112, type: 3}
   decision:
     choices: []
     consequences: []

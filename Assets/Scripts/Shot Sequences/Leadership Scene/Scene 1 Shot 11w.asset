@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 7a6e1a0cc6c6d394a9bf45d9a096b1e5, type: 3}
   dialogue:
   - text: "Charles: \u201CJust teasing. Anyway, you have to relax.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: ceb5e536ecccb23458cfd0d920b36233, type: 3}
   decision:
     choices: []
     consequences: []

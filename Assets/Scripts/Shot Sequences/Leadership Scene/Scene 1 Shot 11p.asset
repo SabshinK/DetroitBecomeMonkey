@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 21300000, guid: b885490b105386740a77f7595991597e, type: 3}
   dialogue:
-  - text: "Charles: \u201CA long time ago there was a sheep farmer."
-    audio: {fileID: 0}
+  - text: "Charles: \u201CA long time ago there was a shepard.\""
+    audio: {fileID: 8300000, guid: 16e10bc43fab0b8478aca0fb6f8f0309, type: 3}
   decision:
     choices: []
     consequences: []

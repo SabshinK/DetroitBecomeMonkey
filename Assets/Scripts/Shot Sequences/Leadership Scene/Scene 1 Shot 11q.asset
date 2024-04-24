@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 8a24c2aa5a3e08d4b9470bbbe5f78a3e, type: 3}
   dialogue:
   - text: "Dylan: \u201CFix the fence, of course!\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a9b2528d7e11ab341931f3c00b778a1b, type: 3}
   decision:
     choices: []
     consequences: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 4891dc4400a687b47ac3e6bf322cbc18, type: 3}
   dialogue:
   - text: "Dylan: \u201CWhat?\""
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f62adbf5f35c3d04f91d12e51667e5a2, type: 3}
   decision:
     choices: []
     consequences: []

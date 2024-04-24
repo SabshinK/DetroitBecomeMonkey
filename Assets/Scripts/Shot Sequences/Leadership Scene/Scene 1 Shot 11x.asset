@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Dylan: \u201CThat\u2019s easy for you to say\u2026 How am I supposed to
       relax after I messed up so badly.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 632283b97d31369469c7d431bd765b48, type: 3}
   decision:
     choices: []
     consequences: []

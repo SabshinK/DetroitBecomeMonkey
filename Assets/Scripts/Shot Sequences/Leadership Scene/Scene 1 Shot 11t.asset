@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Dylan: \u201CSorry Professor Lin\u2026 I\u2019m just not\u2026 thinking
       clearly right now.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d068906709d2f2d44a906693b9f9f84c, type: 3}
   decision:
     choices: []
     consequences: []

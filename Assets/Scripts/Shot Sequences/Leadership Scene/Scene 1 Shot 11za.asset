@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 7d010b8a73e798d43bc8aedef1b4e979, type: 3}
   dialogue:
   - text: "Charles: \u201CWhy not? You\u2019re smart, curious, brave\u2026\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 1435b1a508578e44e8e052896f2c94fd, type: 3}
   decision:
     choices: []
     consequences: []

@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Charles, examining Dylan\u2019s arm: \u201CYou\u2019re bleeding, we should
       wrap it.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: e107adfdbc4e51143928b5c726d9013c, type: 3}
   decision:
     choices: []
     consequences: []

@@ -15,10 +15,10 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 92fbe9d82c435eb4eb650951369e1eba, type: 3}
   dialogue:
   - text: "Dylan: \u201CI\u2019m\u2026 I\u2019m Sorry Professor Lin.\""
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5959666c4af60484485368dee99a0603, type: 3}
   - text: "\"I just\u2026 You could have chosen someone much more experienced, why
       me?\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d547ed3a74686a94d87cfe9ed6bdcb98, type: 3}
   decision:
     choices: []
     consequences: []

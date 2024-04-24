@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Dylan, glancing at his arm: \u201CIt\u2019s nothing, just a little cut.
       Let\u2019s keep going.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0b87946ea10a5d34e9f6698d0d071e6d, type: 3}
   decision:
     choices: []
     consequences: []

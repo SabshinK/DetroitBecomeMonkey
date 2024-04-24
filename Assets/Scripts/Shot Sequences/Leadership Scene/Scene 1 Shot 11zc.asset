@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 8c32c19032703dd489cac91ce5899705, type: 3}
   dialogue:
   - text: "Charles: \u201CWell, there\u2019s a first time for everything.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: fb61d617ec6d2d542a4cf8614249345f, type: 3}
   decision:
     choices: []
     consequences: []

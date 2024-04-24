@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: b885490b105386740a77f7595991597e, type: 3}
   dialogue:
   - text: "\"What would you do if you were him, fix the fence or leave it as it is?\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6536afa61ac6f5e4ebc5113285af4da9, type: 3}
   decision:
     choices: []
     consequences: []
