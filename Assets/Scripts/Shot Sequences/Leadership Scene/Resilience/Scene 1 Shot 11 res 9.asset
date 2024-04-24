@@ -15,9 +15,9 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 4891dc4400a687b47ac3e6bf322cbc18, type: 3}
   dialogue:
   - text: "Dylan: \u201CThen what? I mean, I\u2019ve got plenty of weaknesses.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8c044fa6d40117f469eddee562e5aaf4, type: 3}
   - text: "\"I tripped on some stupid rocks for god's sake.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c3c1c76ed74e12a428688f966f802354, type: 3}
   decision:
     choices: []
     consequences: []

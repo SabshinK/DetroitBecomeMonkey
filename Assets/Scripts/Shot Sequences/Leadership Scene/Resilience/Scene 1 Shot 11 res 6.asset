@@ -15,12 +15,12 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 8c32c19032703dd489cac91ce5899705, type: 3}
   dialogue:
   - text: "Charles: \u201CNot running away.\u201D "
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 20c4cc6378a18bd4e9acf6d2664ae5c6, type: 3}
   - text: "\u201CIn life, sometimes things don't go our way.\u201D "
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: ad570748ef929d4459a9d370bf466c1c, type: 3}
   - text: "\"Instead of losing ourselves to the past, we have to just take a step
       back, reorganize, learn from our mistakes, and keep moving forward.\u201D "
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 40ed92ccbf65be940837e81f06970354, type: 3}
   decision:
     choices: []
     consequences: []

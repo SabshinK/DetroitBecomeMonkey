@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 4a1a365dbde5b2844adbe060ea54c54c, type: 3}
   dialogue:
   - text: "Charles: \u201CYes, I agree with you Dylan. But what else?"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8a732c9d1a250ce42905461c63caa2a0, type: 3}
   decision:
     choices:
     - Sacrifice

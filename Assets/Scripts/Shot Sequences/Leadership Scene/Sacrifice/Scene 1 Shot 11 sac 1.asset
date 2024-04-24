@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Dylan: \u201CDon\u2019t leaders have to be the ones that make the hardest
       decisions?\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 1256d9d281442ae40b841204603ba353, type: 3}
   decision:
     choices: []
     consequences: []

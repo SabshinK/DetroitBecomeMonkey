@@ -16,11 +16,11 @@ MonoBehaviour:
   dialogue:
   - text: "Charles: \u201CThat\u2019s when you should be careful, and consider what
       you\u2019re risking.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a43ffbbcd66e19744adc6bb24d3fed9e, type: 3}
   - text: '"But most important of all, stay true to yourself and your beliefs."'
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: debe6a600a0139944816213ac4221bbd, type: 3}
   - text: "\"Just be who you are.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: cc2dca9cb056f52438aa5544c385f37a, type: 3}
   decision:
     choices: []
     consequences: []

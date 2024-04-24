@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Charles: \u201CAsk yourself: Would you be okay with the consequences,
       no matter what they may be?\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d8b25528ae110e543950dee213680a8f, type: 3}
   decision:
     choices: []
     consequences: []

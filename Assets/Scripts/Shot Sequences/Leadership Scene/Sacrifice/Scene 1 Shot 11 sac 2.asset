@@ -15,10 +15,10 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: e25685ae2d9bf6147ac90954444aa33e, type: 3}
   dialogue:
   - text: "Charles: \u201C...Yes, they do.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d2114a5a43ae7184a8615058ee71fc04, type: 3}
   - text: "\"All leaders will encounter moments where they have to make some form
       of sacrifice.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2ba9b834aa312cf4ebee455f4f93d8d9, type: 3}
   decision:
     choices: []
     consequences: []

@@ -15,12 +15,12 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 8c32c19032703dd489cac91ce5899705, type: 3}
   dialogue:
   - text: "Charles: \u201CResilience is important.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 9f441c29258529a429407519864cab68, type: 3}
   - text: "\u201CPeople look up to those that don\u2019t give up, and sometimes perseverance
       in the face of adversity is just what they need.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5df0789b1fe8398408349bcdc3722e73, type: 3}
   - text: "\u201CPersistence is two faced though.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 116b4aeffb7828544be94653b1c81ea2, type: 3}
   decision:
     choices: []
     consequences: []

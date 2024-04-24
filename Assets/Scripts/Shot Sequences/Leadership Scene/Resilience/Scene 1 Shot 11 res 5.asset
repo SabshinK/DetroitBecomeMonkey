@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 4891dc4400a687b47ac3e6bf322cbc18, type: 3}
   dialogue:
   - text: "Dylan: \u201CFleeing? Like, running away?\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a5c94047e70e4e64e91af3c4a1f1c264, type: 3}
   decision:
     choices: []
     consequences: []

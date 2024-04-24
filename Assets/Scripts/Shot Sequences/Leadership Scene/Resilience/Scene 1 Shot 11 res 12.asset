@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 4891dc4400a687b47ac3e6bf322cbc18, type: 3}
   dialogue:
   - text: "Dylan: \u201CYou\u2019re right, I\u2019m just in my head.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 091fe8528ff8f424b946fa870a753e60, type: 3}
   decision:
     choices: []
     consequences: []

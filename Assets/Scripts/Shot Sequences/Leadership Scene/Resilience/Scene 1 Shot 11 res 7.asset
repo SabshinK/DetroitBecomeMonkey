@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 0167a5ab32da7f9438c9ac2395fe4d55, type: 3}
   dialogue:
   - text: "Dylan: \u201CThat\u2019s a lot to process.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: baf606b077cfb7d4d943a06ae523953e, type: 3}
   decision:
     choices: []
     consequences: []

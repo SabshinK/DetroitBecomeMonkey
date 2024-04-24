@@ -15,10 +15,10 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 7a6e1a0cc6c6d394a9bf45d9a096b1e5, type: 3}
   dialogue:
   - text: "Charles: \u201CTake your time.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6c2b7cd4ace990f48b92b79cab9de775, type: 3}
   - text: "\u201CA true sign of strength is in recognizing, reflecting on, and accepting
       your own shortcomings.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 1f288bcd810956449b339d00ecb64f86, type: 3}
   decision:
     choices: []
     consequences: []
