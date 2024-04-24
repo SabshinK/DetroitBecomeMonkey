@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 7a6e1a0cc6c6d394a9bf45d9a096b1e5, type: 3}
   dialogue:
   - text: "Charles: \u201Cqi\xE1n ch\u0113 zh\u012B ji\xE0n.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 52dedc4d41d0cb641aed9b454e778b88, type: 3}
   decision:
     choices: []
     consequences: []

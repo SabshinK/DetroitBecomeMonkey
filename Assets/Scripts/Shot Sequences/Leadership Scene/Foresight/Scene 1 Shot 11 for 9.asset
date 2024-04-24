@@ -15,7 +15,7 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 92fbe9d82c435eb4eb650951369e1eba, type: 3}
   dialogue:
   - text: "Dylan: \u201CHow do you know if your judgment is right or wrong?\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 342788f8bbacae14a940b7f433d0bdc7, type: 3}
   decision:
     choices: []
     consequences: []

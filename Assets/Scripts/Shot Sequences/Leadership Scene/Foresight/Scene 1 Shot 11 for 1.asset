@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - text: "Dylan: \u201CI guess\u2026 the ability to think ahead and plan for the
       future, whatever that might be.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 4296260056b74cf49a303ee328383d68, type: 3}
   decision:
     choices: []
     consequences: []

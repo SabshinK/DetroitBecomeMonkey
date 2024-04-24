@@ -15,10 +15,10 @@ MonoBehaviour:
   shot: {fileID: 21300000, guid: 8c32c19032703dd489cac91ce5899705, type: 3}
   dialogue:
   - text: "Charles: \u201CThe lesson drawn from the cart ahead.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 92ff050220b49f942bf49bf46c86a5ba, type: 3}
   - text: "\u201CIn other words, we learn from the past so that we can make the best
       decisions today.\u201D"
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c9a712c4e9018604ea8f8ba988623c98, type: 3}
   decision:
     choices: []
     consequences: []
