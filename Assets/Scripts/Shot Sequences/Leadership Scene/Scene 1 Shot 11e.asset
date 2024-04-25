@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11e
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 7d010b8a73e798d43bc8aedef1b4e979, type: 3}
+  shot: {fileID: 21300000, guid: 7a6e1a0cc6c6d394a9bf45d9a096b1e5, type: 3}
   dialogue:
   - text: "Charles: \u201CBe careful going through, there\u2019s a small dropoff\u2014\u201D"
     audio: {fileID: 8300000, guid: aac4efdc5ac58c84d9e5d5d3b61dcb84, type: 3}

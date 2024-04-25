@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11b
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: d206c69edd2c4c044966decf0525a24d, type: 3}
+  shot: {fileID: 21300000, guid: 5504fab5c2863aa47a546d149624047e, type: 3}
   dialogue:
   - text: As the two are walking through the narrow tunnels, Charles notices that
       Dylan is lagging behind.

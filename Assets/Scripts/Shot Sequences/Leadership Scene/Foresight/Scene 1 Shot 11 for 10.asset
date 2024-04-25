@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11 for 10
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 8c32c19032703dd489cac91ce5899705, type: 3}
+  shot: {fileID: 21300000, guid: 0c1d2c2ba8e05cf4691a10e25812cc2b, type: 3}
   dialogue:
   - text: "Charles: \u201CNo leader can ever be truly certain.\u201D"
     audio: {fileID: 8300000, guid: 41b39bbc39aa83749b3ddbe3831b0b0e, type: 3}

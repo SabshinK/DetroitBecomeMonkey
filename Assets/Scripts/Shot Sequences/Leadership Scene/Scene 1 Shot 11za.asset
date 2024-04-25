@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11za
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 7d010b8a73e798d43bc8aedef1b4e979, type: 3}
+  shot: {fileID: 21300000, guid: ad9da24384d782d4b8866758c1d1532e, type: 3}
   dialogue:
   - text: "Charles: \u201CWhy not? You\u2019re smart, curious, brave\u2026\u201D"
     audio: {fileID: 8300000, guid: 1435b1a508578e44e8e052896f2c94fd, type: 3}

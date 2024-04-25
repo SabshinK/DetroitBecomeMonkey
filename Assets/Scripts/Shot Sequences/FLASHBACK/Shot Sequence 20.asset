@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 20
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: a60c9f6c8e1e0a84c8005748a0dab7be, type: 3}
+  dialogue:
+  - text: 'Taylor nervously looks up at the sky above her. '
+    audio: {fileID: 8300000, guid: dfd8a718c9035b24f9285c26c06f56cd, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: a43321f907df24d48b2585a3e4b982e5, type: 2}
+  nextSequence: {fileID: 11400000, guid: 413be36d5f30c364b9bcac7e5ed8a682, type: 2}

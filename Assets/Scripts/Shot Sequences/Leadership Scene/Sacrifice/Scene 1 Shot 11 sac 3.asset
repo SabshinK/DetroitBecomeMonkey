@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11 sac 3
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: e25685ae2d9bf6147ac90954444aa33e, type: 3}
+  shot: {fileID: 21300000, guid: 34a21b8d5ae966741a8ebcf57150f19d, type: 3}
   dialogue:
-  - text: Charles stops for a moment and looks down for a second. His face looks
-      a little paler than before.
+  - text: Charles stops for a moment and looks down for a second. A flash back of
+      memory.
     audio: {fileID: 0}
   decision:
     choices: []

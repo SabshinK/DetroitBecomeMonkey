@@ -132,12 +132,12 @@ public class VotingUI : MonoBehaviour
         {
             focusGroupNoteObject.SetActive(true);
             focusGroupIcons[0].SetActive(true);
-            methodText.text = "Focus Group";
+            methodText.text = "Sequential";
             methodIcon.sprite = focusIcon;
         }
         else
         {
-            methodText.text = "Voting";
+            methodText.text = "Simultaneous";
             methodIcon.sprite = votingIcon;
         }
         methodIconObj.SetActive(true);

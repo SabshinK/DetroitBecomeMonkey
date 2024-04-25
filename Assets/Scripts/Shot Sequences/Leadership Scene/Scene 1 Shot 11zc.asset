@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11zc
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 8c32c19032703dd489cac91ce5899705, type: 3}
+  shot: {fileID: 21300000, guid: ad9da24384d782d4b8866758c1d1532e, type: 3}
   dialogue:
   - text: "Charles: \u201CWell, there\u2019s a first time for everything.\u201D"
     audio: {fileID: 8300000, guid: fb61d617ec6d2d542a4cf8614249345f, type: 3}

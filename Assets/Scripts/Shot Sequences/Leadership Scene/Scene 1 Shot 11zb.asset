@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11zb
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 92fbe9d82c435eb4eb650951369e1eba, type: 3}
+  shot: {fileID: 21300000, guid: 0167a5ab32da7f9438c9ac2395fe4d55, type: 3}
   dialogue:
   - text: "Dylan: \u201CSure, I guess. But\u2026 I\u2019ve never led an expedition
       like this before.\u201D"

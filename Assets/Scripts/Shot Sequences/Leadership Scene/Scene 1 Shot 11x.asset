@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11x
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 4891dc4400a687b47ac3e6bf322cbc18, type: 3}
+  shot: {fileID: 21300000, guid: ca5b29dfe67200d45a5cb919cc5e81a2, type: 3}
   dialogue:
   - text: "Dylan: \u201CThat\u2019s easy for you to say\u2026 How am I supposed to
       relax after I messed up so badly.\u201D"

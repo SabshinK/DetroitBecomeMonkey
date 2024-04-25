@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Shot Sequence 6
   m_EditorClassIdentifier: 
-  shot: {fileID: 0}
-  dialogue: []
+  shot: {fileID: 21300000, guid: 53635f17f089e494687225ed9458fc27, type: 3}
+  dialogue:
+  - text: hmmm
+    audio: {fileID: 8300000, guid: 708945509d5877e41856df0e3cc7f619, type: 3}
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
     useFocusGroup: 0
-  previousSequence: {fileID: 0}
-  nextSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 0365bc41e6e63af419383053caae930a, type: 2}
+  nextSequence: {fileID: 11400000, guid: 87ee177e88ed3a34ea6cb3b18d735e3f, type: 2}

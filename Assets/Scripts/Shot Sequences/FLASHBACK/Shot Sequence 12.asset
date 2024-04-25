@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 12
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: 2281d2d00a3a4a74db1f2154d4a560a0, type: 3}
+  dialogue:
+  - text: "Don\u2019t worry, Taylor. We will be in and out, with 9 god damn million
+      dollars in our pocket. "
+    audio: {fileID: 8300000, guid: 0201b32720d1d2e45b0c50d02e833eac, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: 1aa3ec633105ff046bd531aa4a549bdc, type: 2}
+  nextSequence: {fileID: 11400000, guid: 70c85853e1f2496408374e35b4ad73a7, type: 2}

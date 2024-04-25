@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11f
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: d206c69edd2c4c044966decf0525a24d, type: 3}
+  shot: {fileID: 21300000, guid: 9c9252591b6b15f44bf2352f239db2b1, type: 3}
   dialogue:
   - text: "Dylan: \u201CWoah!\u201D"
     audio: {fileID: 8300000, guid: 3105fc3aa3be7e749a388f862079bded, type: 3}

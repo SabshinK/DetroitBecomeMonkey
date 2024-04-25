@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 14
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: f7f77feac73d3164b84da0fb7674febd, type: 3}
+  dialogue:
+  - text: "Exactly, that\u2019s why we gotta finish what we started. Trust me Taylor,
+      we will walk out triumphant. "
+    audio: {fileID: 8300000, guid: 9a471b575c47a8048b088b4c30cfaa79, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: 70c85853e1f2496408374e35b4ad73a7, type: 2}
+  nextSequence: {fileID: 11400000, guid: 9ec0a83d1d0f4ef46817443fb212790d, type: 2}

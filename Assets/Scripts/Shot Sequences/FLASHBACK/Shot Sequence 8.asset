@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Shot Sequence 8
   m_EditorClassIdentifier: 
-  shot: {fileID: 0}
-  dialogue: []
+  shot: {fileID: 21300000, guid: 4750ebfa36c1a3c4ba24d3d3213e78a6, type: 3}
+  dialogue:
+  - text: You got it, Charles!
+    audio: {fileID: 8300000, guid: 6857a470faa3b804aba81119b0843000, type: 3}
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
     useFocusGroup: 0
-  previousSequence: {fileID: 0}
-  nextSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 87ee177e88ed3a34ea6cb3b18d735e3f, type: 2}
+  nextSequence: {fileID: 11400000, guid: 4b0d1b6fb62589a45b6167d7a4052e30, type: 2}

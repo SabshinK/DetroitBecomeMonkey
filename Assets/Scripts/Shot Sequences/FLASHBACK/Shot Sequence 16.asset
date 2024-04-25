@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 16
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: e456636b38b487d4db31b26d1eebed9a, type: 3}
+  dialogue:
+  - text: 'Charles, Taylor and Stephen walk into the mysterious and dangerous natural
+      wonder, known as the Scorpion Canyon. '
+    audio: {fileID: 8300000, guid: 219dbe6928a107d408bcd3405d294d50, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: 9ec0a83d1d0f4ef46817443fb212790d, type: 2}
+  nextSequence: {fileID: 11400000, guid: f63a1500121cbd54d8f2cc076f5e68d4, type: 2}

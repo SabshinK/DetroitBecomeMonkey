@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 17
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: 741742b9eb5a5794f9de76b3da072b11, type: 3}
+  dialogue:
+  - text: 'In the depths of the Canyon, under a foreboding sky, Charles leads his
+      team into the unknown. '
+    audio: {fileID: 8300000, guid: 4de9fb01279e2444f8facbb70ca09517, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: 1d2b520645c5710429b4a9ab8d08b25b, type: 2}
+  nextSequence: {fileID: 11400000, guid: fdbfb8cb88c1c4541a6cf88c89a66bbb, type: 2}

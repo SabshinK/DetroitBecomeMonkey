@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11 for 11
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 24cf94e3f9e292f478851fdde5844a2a, type: 3}
+  shot: {fileID: 21300000, guid: 3706d7493da59c64ea115a290f62d633, type: 3}
   dialogue:
   - text: Dylan springs up, looking eager to continue onward.
     audio: {fileID: 0}

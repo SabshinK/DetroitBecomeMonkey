@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11 res 1
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 4a1a365dbde5b2844adbe060ea54c54c, type: 3}
+  shot: {fileID: 21300000, guid: 4891dc4400a687b47ac3e6bf322cbc18, type: 3}
   dialogue:
   - text: "Dylan: \u201CResilience. Being tough when the going gets tough, I guess.\u201D"
     audio: {fileID: 8300000, guid: 3fe06af5618cd8f41a33d1a1102d1fdd, type: 3}

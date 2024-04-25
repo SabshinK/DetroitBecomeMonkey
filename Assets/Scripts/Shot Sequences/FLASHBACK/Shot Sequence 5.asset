@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Shot Sequence 5
   m_EditorClassIdentifier: 
-  shot: {fileID: 0}
-  dialogue: []
+  shot: {fileID: 21300000, guid: 8856c525451eab04d96133e74b4c6f0e, type: 3}
+  dialogue:
+  - text: 'He does seem pretty certain that this gem will be at the end of that canyon
+      a mile away, although all the sources of info he got are just some rumours
+      and the voice in his head. We should trust him. Here we are, alive, so close
+      to what we came here for.  '
+    audio: {fileID: 8300000, guid: d29e8597bb7c1cd44aa5777706d295cb, type: 3}
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
     useFocusGroup: 0
-  previousSequence: {fileID: 0}
-  nextSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: db6bf38daa9aa5740a6e17b49b3dbf21, type: 2}
+  nextSequence: {fileID: 11400000, guid: 66f4b949de61ad84f95742b9e2f2531c, type: 2}

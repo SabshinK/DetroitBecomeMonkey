@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 42
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: 9d634798d931fc84da1f6f5576e75415, type: 3}
+  dialogue:
+  - text: "He marches forward, eventually finding a way out of\u2026.a place, he
+      never wants to return."
+    audio: {fileID: 8300000, guid: 28595ee94fb4ec841bfaccfb94b03a69, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: c369ba3ef7c15464b892732e9024c727, type: 2}
+  nextSequence: {fileID: 11400000, guid: 9184996ef4650794cac4979eb4ecfb8f, type: 2}

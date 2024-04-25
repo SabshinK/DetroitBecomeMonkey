@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 10
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: 88a44a28398ba8147b4f89b009caa539, type: 3}
+  dialogue:
+  - text: 
+    audio: {fileID: 0}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: 4b0d1b6fb62589a45b6167d7a4052e30, type: 2}
+  nextSequence: {fileID: 11400000, guid: 1aa3ec633105ff046bd531aa4a549bdc, type: 2}

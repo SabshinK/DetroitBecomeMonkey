@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Shot Sequence 2
   m_EditorClassIdentifier: 
-  shot: {fileID: 0}
-  dialogue: []
+  shot: {fileID: 21300000, guid: 53635f17f089e494687225ed9458fc27, type: 3}
+  dialogue:
+  - text: " But after what happened in the last 5 days, I don\u2019t know anymore\u2026He\u2019s
+      just too obsessed with this gem. I know it\u2019s worth millions. But it\u2019s
+      like he\u2019s willing to get us all killed just to find it. "
+    audio: {fileID: 8300000, guid: ca462cb376149f04a8c2163b08d2f5d1, type: 3}
   decision:
     choices: []
     consequences: []
     decisionMode: 0
     isTimed: 0
     useFocusGroup: 0
-  previousSequence: {fileID: 0}
-  nextSequence: {fileID: 0}
+  previousSequence: {fileID: 11400000, guid: 8876001def702604baf0a53012f651f1, type: 2}
+  nextSequence: {fileID: 11400000, guid: 86087cf55002e1e48adc4456c8971ecd, type: 2}

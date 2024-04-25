@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
+  m_Name: Shot Sequence 30
+  m_EditorClassIdentifier: 
+  shot: {fileID: 21300000, guid: 5bc900d9c6b54b846bd24f16f48b78a9, type: 3}
+  dialogue:
+  - text: "The aftermath is devastating. Smoke and dust shrouds the canyon in a thick,
+      oppressive gloom. Taylor and Stephen lay motionless, their journeys cruelly
+      ended by Charles\u2019 call. "
+    audio: {fileID: 8300000, guid: b2383d4a4b0b9d5498dab6128c6aac86, type: 3}
+  decision:
+    choices: []
+    consequences: []
+    decisionMode: 0
+    isTimed: 0
+    useFocusGroup: 0
+  previousSequence: {fileID: 11400000, guid: 7b0c13000751b694e8ad291ff9b92218, type: 2}
+  nextSequence: {fileID: 11400000, guid: 77d0bc2f609520e4082ae3ca6859aa2c, type: 2}

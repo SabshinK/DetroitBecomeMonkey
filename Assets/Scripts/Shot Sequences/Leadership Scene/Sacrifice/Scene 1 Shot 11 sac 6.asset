@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e5ac3dac9ce94a83409269f2de821, type: 3}
   m_Name: Scene 1 Shot 11 sac 6
   m_EditorClassIdentifier: 
-  shot: {fileID: 21300000, guid: 7a6e1a0cc6c6d394a9bf45d9a096b1e5, type: 3}
+  shot: {fileID: 21300000, guid: ad9da24384d782d4b8866758c1d1532e, type: 3}
   dialogue:
   - text: "Charles: \u201CAsk yourself: Would you be okay with the consequences,
       no matter what they may be?\u201D"
